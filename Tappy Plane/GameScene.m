@@ -7,19 +7,34 @@
 //
 
 #import "GameScene.h"
+#import "Plane.h"
+
+@interface GameScene ()
+
+@property (nonatomic) Plane *player;
+@property (nonatomic) SKNode *world;
+
+@end
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+   
+}
+
+-(id)initWithSize:(CGSize)size {
+    if(self = [super initWithSize:size]) {
+        // Setup world.
+        _world = [SKNode node];
+        [self addChild:_world];
+        // Setup player.
+        _player = [[Plane alloc] init];
+        _player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+        [_world addChild:_player];
+    }
     
-    myLabel.text = @"Hello , World!";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+    return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -28,17 +43,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
         
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
     }
 }
 
