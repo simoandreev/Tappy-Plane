@@ -42,7 +42,9 @@
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        
+        self.player.engineRunning = !self.player.engineRunning;
+        [self.player setRandomColour];
+
         
     }
 }

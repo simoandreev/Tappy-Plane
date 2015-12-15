@@ -57,7 +57,7 @@
 		5D237B861C20108800293BDD /* number7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B281C20108800293BDD /* number7.png */; };
 		5D237B871C20108800293BDD /* number8.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B291C20108800293BDD /* number8.png */; };
 		5D237B881C20108800293BDD /* number9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B2A1C20108800293BDD /* number9.png */; };
-		5D237B951C20108800293BDD /* puffLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B381C20108800293BDD /* puffLarge.png */; };
+		5D237B951C20108800293BDD /* puffLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B381C20108800293BDD /* puffLarge@2x.png */; };
 		5D237B961C20108800293BDD /* puffSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B391C20108800293BDD /* puffSmall.png */; };
 		5D237B971C20108800293BDD /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3A1C20108800293BDD /* rock.png */; };
 		5D237B981C20108800293BDD /* rockDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3B1C20108800293BDD /* rockDown.png */; };
@@ -94,6 +94,9 @@
 		5D237BB71C20108800293BDD /* kenvector_future_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B5E1C20108800293BDD /* kenvector_future_thin.ttf */; };
 		5D237BD11C201EFD00293BDD /* Planes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BD01C201EFD00293BDD /* Planes.atlas */; };
 		5D237BD41C20213100293BDD /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237BD31C20213100293BDD /* Plane.m */; };
+		5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BFE1C2028CA00293BDD /* Plane Animations.plist */; };
+		5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */; };
+		5D237C031C204FDB00293BDD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237C011C204FDB00293BDD /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,7 +155,7 @@
 		5D237B281C20108800293BDD /* number7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number7.png; sourceTree = "<group>"; };
 		5D237B291C20108800293BDD /* number8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number8.png; sourceTree = "<group>"; };
 		5D237B2A1C20108800293BDD /* number9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number9.png; sourceTree = "<group>"; };
-		5D237B381C20108800293BDD /* puffLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffLarge.png; sourceTree = "<group>"; };
+		5D237B381C20108800293BDD /* puffLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puffLarge@2x.png"; sourceTree = "<group>"; };
 		5D237B391C20108800293BDD /* puffSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffSmall.png; sourceTree = "<group>"; };
 		5D237B3A1C20108800293BDD /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		5D237B3B1C20108800293BDD /* rockDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockDown.png; sourceTree = "<group>"; };
@@ -190,6 +193,9 @@
 		5D237BD01C201EFD00293BDD /* Planes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Planes.atlas; sourceTree = "<group>"; };
 		5D237BD21C20213100293BDD /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		5D237BD31C20213100293BDD /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
+		5D237BFE1C2028CA00293BDD /* Plane Animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Plane Animations.plist"; sourceTree = "<group>"; };
+		5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlanePuffTrail.sks; sourceTree = "<group>"; };
+		5D237C011C204FDB00293BDD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,7 @@
 		5D237AE11C200DC200293BDD /* Tappy Plane */ = {
 			isa = PBXGroup;
 			children = (
+				5D237BFE1C2028CA00293BDD /* Plane Animations.plist */,
 				5D237AE51C200DC300293BDD /* AppDelegate.h */,
 				5D237AE61C200DC300293BDD /* AppDelegate.m */,
 				5D237AE81C200DC300293BDD /* GameScene.h */,
@@ -243,6 +250,8 @@
 		5D237AE21C200DC300293BDD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */,
+				5D237C011C204FDB00293BDD /* spark.png */,
 				5D237AFE1C20108800293BDD /* PNG */,
 				5D237B521C20108800293BDD /* preview.png */,
 				5D237B531C20108800293BDD /* sample.png */,
@@ -266,7 +275,7 @@
 				5D237B041C20108800293BDD /* groundSnow.png */,
 				5D237B051C20108800293BDD /* Letters */,
 				5D237B201C20108800293BDD /* Numbers */,
-				5D237B381C20108800293BDD /* puffLarge.png */,
+				5D237B381C20108800293BDD /* puffLarge@2x.png */,
 				5D237B391C20108800293BDD /* puffSmall.png */,
 				5D237B3A1C20108800293BDD /* rock.png */,
 				5D237B3B1C20108800293BDD /* rockDown.png */,
@@ -465,6 +474,7 @@
 				5D237BAF1C20108800293BDD /* sample.png in Resources */,
 				5D237BA01C20108800293BDD /* starGold.png in Resources */,
 				5D237B9C1C20108800293BDD /* rockIceDown.png in Resources */,
+				5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */,
 				5D237B781C20108800293BDD /* letterT.png in Resources */,
 				5D237B9D1C20108800293BDD /* rockSnow.png in Resources */,
 				5D237B7B1C20108800293BDD /* letterW.png in Resources */,
@@ -477,6 +487,7 @@
 				5D237BB21C20108800293BDD /* sheet.png in Resources */,
 				5D237BD11C201EFD00293BDD /* Planes.atlas in Resources */,
 				5D237B9B1C20108800293BDD /* rockIce.png in Resources */,
+				5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */,
 				5D237B881C20108800293BDD /* number9.png in Resources */,
 				5D237BAC1C20108800293BDD /* textGetReady.png in Resources */,
 				5D237BB51C20108800293BDD /* vector.swf in Resources */,
@@ -487,6 +498,7 @@
 				5D237B6E1C20108800293BDD /* letterJ.png in Resources */,
 				5D237B601C20108800293BDD /* groundDirt.png in Resources */,
 				5D237BAD1C20108800293BDD /* UIbg.png in Resources */,
+				5D237C031C204FDB00293BDD /* spark.png in Resources */,
 				5D237B991C20108800293BDD /* rockGrass.png in Resources */,
 				5D237B5F1C20108800293BDD /* background.png in Resources */,
 				5D237B761C20108800293BDD /* letterR.png in Resources */,
@@ -502,7 +514,7 @@
 				5D237B631C20108800293BDD /* groundRock.png in Resources */,
 				5D237B661C20108800293BDD /* letterB.png in Resources */,
 				5D237BA41C20108800293BDD /* medalBronze.png in Resources */,
-				5D237B951C20108800293BDD /* puffLarge.png in Resources */,
+				5D237B951C20108800293BDD /* puffLarge@2x.png in Resources */,
 				5D237BA21C20108800293BDD /* buttonLarge.png in Resources */,
 				5D237BA91C20108800293BDD /* tapRight.png in Resources */,
 				5D237BAB1C20108800293BDD /* textGameOver.png in Resources */,
