@@ -8,13 +8,17 @@
 
 #import "GameScene.h"
 #import "Plane.h"
+#import "ScrollingLayer.h"
 
 @interface GameScene ()
 
 @property (nonatomic) Plane *player;
 @property (nonatomic) SKNode *world;
+@property (nonatomic) ScrollingLayer *background;
 
 @end
+
+static const CGFloat kMinFPS = 10.0 / 60.0;
 
 @implementation GameScene
 
@@ -25,12 +29,25 @@
 
 - (id)initWithSize:(CGSize)size {
     if(self = [super initWithSize:size]) {
+        SKTextureAtlas *graphics = [SKTextureAtlas atlasNamed:@"Graphics"];
+        
         // Setup world.
         _world = [SKNode node];
         [self addChild:_world];
         
         // Setup physics.
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.5);
+        
+        // Setup background.
+        NSMutableArray *backgroudTiles = [[NSMutableArray alloc] init];
+        for (int i = 0; i < 3; i++) {
+            [backgroudTiles addObject:[SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]]];
+        }
+        _background = [[ScrollingLayer alloc] initWithTiles:backgroudTiles];
+        _background.position = CGPointZero;
+        _background.horizontalScrollSpeed = -60;
+        _background.scrolling = YES;
+        [_world addChild:_background];
         
         // Setup player.
         _player = [[Plane alloc] init];
@@ -59,9 +76,16 @@
 }
 
 
-- (void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+-(void)update:(NSTimeInterval)currentTime
+{
+    static NSTimeInterval lastCallTime;
+    NSTimeInterval timeElapsed = currentTime - lastCallTime;
+    if (timeElapsed > kMinFPS) {
+        timeElapsed = kMinFPS;
+    }
+    lastCallTime = currentTime;
     [self.player update];
+    [self.background updateWithTimeElpased:timeElapsed];
 }
 
 @end

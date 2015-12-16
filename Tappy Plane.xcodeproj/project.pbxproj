@@ -92,7 +92,7 @@
 		5D237BB51C20108800293BDD /* vector.swf in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B5B1C20108800293BDD /* vector.swf */; };
 		5D237BB61C20108800293BDD /* kenvector_future.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B5D1C20108800293BDD /* kenvector_future.ttf */; };
 		5D237BB71C20108800293BDD /* kenvector_future_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B5E1C20108800293BDD /* kenvector_future_thin.ttf */; };
-		5D237BD11C201EFD00293BDD /* Planes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BD01C201EFD00293BDD /* Planes.atlas */; };
+		5D237BD11C201EFD00293BDD /* Graphics.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BD01C201EFD00293BDD /* Graphics.atlas */; };
 		5D237BD41C20213100293BDD /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237BD31C20213100293BDD /* Plane.m */; };
 		5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BFE1C2028CA00293BDD /* Plane Animations.plist */; };
 		5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */; };
@@ -192,7 +192,7 @@
 		5D237B5B1C20108800293BDD /* vector.swf */ = {isa = PBXFileReference; lastKnownFileType = file; path = vector.swf; sourceTree = "<group>"; };
 		5D237B5D1C20108800293BDD /* kenvector_future.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenvector_future.ttf; sourceTree = "<group>"; };
 		5D237B5E1C20108800293BDD /* kenvector_future_thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenvector_future_thin.ttf; sourceTree = "<group>"; };
-		5D237BD01C201EFD00293BDD /* Planes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Planes.atlas; sourceTree = "<group>"; };
+		5D237BD01C201EFD00293BDD /* Graphics.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Graphics.atlas; sourceTree = "<group>"; };
 		5D237BD21C20213100293BDD /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		5D237BD31C20213100293BDD /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 		5D237BFE1C2028CA00293BDD /* Plane Animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Plane Animations.plist"; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		5D237AFE1C20108800293BDD /* PNG */ = {
 			isa = PBXGroup;
 			children = (
-				5D237BD01C201EFD00293BDD /* Planes.atlas */,
+				5D237BD01C201EFD00293BDD /* Graphics.atlas */,
 				5D237AFF1C20108800293BDD /* background.png */,
 				5D237B001C20108800293BDD /* groundDirt.png */,
 				5D237B011C20108800293BDD /* groundGrass.png */,
@@ -495,7 +495,7 @@
 				5D237BB11C20108800293BDD /* planes.xml in Resources */,
 				5D237B731C20108800293BDD /* letterO.png in Resources */,
 				5D237BB21C20108800293BDD /* sheet.png in Resources */,
-				5D237BD11C201EFD00293BDD /* Planes.atlas in Resources */,
+				5D237BD11C201EFD00293BDD /* Graphics.atlas in Resources */,
 				5D237B9B1C20108800293BDD /* rockIce.png in Resources */,
 				5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */,
 				5D237B881C20108800293BDD /* number9.png in Resources */,
