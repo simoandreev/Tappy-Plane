@@ -97,6 +97,8 @@
 		5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D237BFE1C2028CA00293BDD /* Plane Animations.plist */; };
 		5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */; };
 		5D237C031C204FDB00293BDD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237C011C204FDB00293BDD /* spark.png */; };
+		5D237C061C2180F500293BDD /* ScrollingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237C051C2180F500293BDD /* ScrollingNode.m */; };
+		5D237C091C21833D00293BDD /* ScrollingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237C081C21833D00293BDD /* ScrollingLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +198,10 @@
 		5D237BFE1C2028CA00293BDD /* Plane Animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Plane Animations.plist"; sourceTree = "<group>"; };
 		5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlanePuffTrail.sks; sourceTree = "<group>"; };
 		5D237C011C204FDB00293BDD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		5D237C041C2180F500293BDD /* ScrollingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingNode.h; sourceTree = "<group>"; };
+		5D237C051C2180F500293BDD /* ScrollingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingNode.m; sourceTree = "<group>"; };
+		5D237C071C21833D00293BDD /* ScrollingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLayer.h; sourceTree = "<group>"; };
+		5D237C081C21833D00293BDD /* ScrollingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +241,10 @@
 				5D237AE91C200DC300293BDD /* GameScene.m */,
 				5D237BD21C20213100293BDD /* Plane.h */,
 				5D237BD31C20213100293BDD /* Plane.m */,
+				5D237C041C2180F500293BDD /* ScrollingNode.h */,
+				5D237C051C2180F500293BDD /* ScrollingNode.m */,
+				5D237C071C21833D00293BDD /* ScrollingLayer.h */,
+				5D237C081C21833D00293BDD /* ScrollingLayer.m */,
 				5D237AEB1C200DC300293BDD /* GameScene.sks */,
 				5D237AED1C200DC300293BDD /* GameViewController.h */,
 				5D237AEE1C200DC400293BDD /* GameViewController.m */,
@@ -545,9 +555,11 @@
 			files = (
 				5D237AEF1C200DC400293BDD /* GameViewController.m in Sources */,
 				5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */,
+				5D237C091C21833D00293BDD /* ScrollingLayer.m in Sources */,
 				5D237BD41C20213100293BDD /* Plane.m in Sources */,
 				5D237AEA1C200DC300293BDD /* GameScene.m in Sources */,
 				5D237AE41C200DC300293BDD /* main.m in Sources */,
+				5D237C061C2180F500293BDD /* ScrollingNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

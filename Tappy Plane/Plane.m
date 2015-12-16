@@ -20,12 +20,17 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 
 @implementation Plane
 
-- (id)init
-{
+- (id)init {
     self = [super initWithImageNamed:@"planeBlue1"];
     if (self) {
+        // Setup physics body.
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width * 0.5];
+        
         // Init array to hold animation actions.
         _planeAnimations = [[NSMutableArray alloc] init];
+        
+        self.physicsBody.mass = 0.08;
+        
         // Load animation plist file.
         NSString *path = [[NSBundle mainBundle] pathForResource:@"Plane Animations" ofType:@"plist"];
         NSDictionary *animations = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -46,21 +51,19 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     return self;
 }
 
-- (void)setEngineRunning:(BOOL)engineRunning
-{
+- (void)setEngineRunning:(BOOL)engineRunning {
     _engineRunning = engineRunning;
     if (engineRunning) {
+        self.puffTrailEmitter.targetNode = self.parent;
         [self actionForKey:kKeyPlaneAnimation].speed = 1;
         self.puffTrailEmitter.particleBirthRate = self.puffTrailBirthRate;
-    }
-    else {
+    } else {
         [self actionForKey:kKeyPlaneAnimation].speed = 0;
         self.puffTrailEmitter.particleBirthRate = 0;
     }
 }
 
-- (void)setRandomColour
-{
+- (void)setRandomColour {
     [self removeActionForKey:kKeyPlaneAnimation];
     SKAction *animation = [self.planeAnimations objectAtIndex:arc4random_uniform(self.planeAnimations.count)];
     [self runAction:animation withKey:kKeyPlaneAnimation];
@@ -69,8 +72,7 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     }
 }
 
-- (SKAction*)animationFromArray:(NSArray*)textureNames withDuration:(CGFloat)duration
-{
+- (SKAction*)animationFromArray:(NSArray*)textureNames withDuration:(CGFloat)duration {
     // Create array to hold textures.
     NSMutableArray *frames = [[NSMutableArray alloc] init];
     // Get planes atlas.
@@ -85,6 +87,12 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     return [SKAction repeatActionForever:[SKAction animateWithTextures:frames
                                                           timePerFrame:frameTime
                                                                 resize:NO restore:NO]];
+}
+
+- (void)update {
+    if (self.accelerating) {
+        [self.physicsBody applyForce:CGVectorMake(0.0, 100)];
+    }
 }
 
 @end

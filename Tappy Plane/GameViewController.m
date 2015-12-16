@@ -30,8 +30,7 @@
 
 @implementation GameViewController
 
--(void)viewWillLayoutSubviews
-{
+-(void)viewWillLayoutSubviews {
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -44,8 +43,7 @@
     [skView presentScene:scene];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     // Configure the view.
@@ -63,13 +61,11 @@
 //    [skView presentScene:scene];
 }
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }

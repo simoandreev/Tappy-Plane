@@ -11,7 +11,9 @@
 @interface Plane : SKSpriteNode
 
 @property (nonatomic) BOOL engineRunning;
+@property (nonatomic) BOOL accelerating;
 
 - (void)setRandomColour;
+- (void)update;
 
 @end
