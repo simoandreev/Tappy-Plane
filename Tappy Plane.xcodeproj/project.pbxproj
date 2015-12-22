@@ -15,12 +15,6 @@
 		5D237AF21C200DC400293BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D237AF01C200DC400293BDD /* Main.storyboard */; };
 		5D237AF41C200DC400293BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D237AF31C200DC400293BDD /* Assets.xcassets */; };
 		5D237AF71C200DC400293BDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D237AF51C200DC400293BDD /* LaunchScreen.storyboard */; };
-		5D237B5F1C20108800293BDD /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237AFF1C20108800293BDD /* background.png */; };
-		5D237B601C20108800293BDD /* groundDirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B001C20108800293BDD /* groundDirt.png */; };
-		5D237B611C20108800293BDD /* groundGrass.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B011C20108800293BDD /* groundGrass.png */; };
-		5D237B621C20108800293BDD /* groundIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B021C20108800293BDD /* groundIce.png */; };
-		5D237B631C20108800293BDD /* groundRock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B031C20108800293BDD /* groundRock.png */; };
-		5D237B641C20108800293BDD /* groundSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B041C20108800293BDD /* groundSnow.png */; };
 		5D237B651C20108800293BDD /* letterA.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B061C20108800293BDD /* letterA.png */; };
 		5D237B661C20108800293BDD /* letterB.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B071C20108800293BDD /* letterB.png */; };
 		5D237B671C20108800293BDD /* letterC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B081C20108800293BDD /* letterC.png */; };
@@ -115,12 +109,6 @@
 		5D237AF31C200DC400293BDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D237AF61C200DC400293BDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D237AF81C200DC400293BDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D237AFF1C20108800293BDD /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		5D237B001C20108800293BDD /* groundDirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundDirt.png; sourceTree = "<group>"; };
-		5D237B011C20108800293BDD /* groundGrass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundGrass.png; sourceTree = "<group>"; };
-		5D237B021C20108800293BDD /* groundIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundIce.png; sourceTree = "<group>"; };
-		5D237B031C20108800293BDD /* groundRock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundRock.png; sourceTree = "<group>"; };
-		5D237B041C20108800293BDD /* groundSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groundSnow.png; sourceTree = "<group>"; };
 		5D237B061C20108800293BDD /* letterA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letterA.png; sourceTree = "<group>"; };
 		5D237B071C20108800293BDD /* letterB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letterB.png; sourceTree = "<group>"; };
 		5D237B081C20108800293BDD /* letterC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letterC.png; sourceTree = "<group>"; };
@@ -277,12 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				5D237BD01C201EFD00293BDD /* Graphics.atlas */,
-				5D237AFF1C20108800293BDD /* background.png */,
-				5D237B001C20108800293BDD /* groundDirt.png */,
-				5D237B011C20108800293BDD /* groundGrass.png */,
-				5D237B021C20108800293BDD /* groundIce.png */,
-				5D237B031C20108800293BDD /* groundRock.png */,
-				5D237B041C20108800293BDD /* groundSnow.png */,
 				5D237B051C20108800293BDD /* Letters */,
 				5D237B201C20108800293BDD /* Numbers */,
 				5D237B381C20108800293BDD /* puffLarge@2x.png */,
@@ -461,13 +443,11 @@
 				5D237B701C20108800293BDD /* letterL.png in Resources */,
 				5D237B651C20108800293BDD /* letterA.png in Resources */,
 				5D237BA81C20108800293BDD /* tapLeft.png in Resources */,
-				5D237B621C20108800293BDD /* groundIce.png in Resources */,
 				5D237B6F1C20108800293BDD /* letterK.png in Resources */,
 				5D237B7A1C20108800293BDD /* letterV.png in Resources */,
 				5D237B681C20108800293BDD /* letterD.png in Resources */,
 				5D237B7C1C20108800293BDD /* letterX.png in Resources */,
 				5D237B751C20108800293BDD /* letterQ.png in Resources */,
-				5D237B641C20108800293BDD /* groundSnow.png in Resources */,
 				5D237B6A1C20108800293BDD /* letterF.png in Resources */,
 				5D237B9A1C20108800293BDD /* rockGrassDown.png in Resources */,
 				5D237B831C20108800293BDD /* number4.png in Resources */,
@@ -504,13 +484,10 @@
 				5D237B6B1C20108800293BDD /* letterG.png in Resources */,
 				5D237B741C20108800293BDD /* letterP.png in Resources */,
 				5D237BB01C20108800293BDD /* planes.png in Resources */,
-				5D237B611C20108800293BDD /* groundGrass.png in Resources */,
 				5D237B6E1C20108800293BDD /* letterJ.png in Resources */,
-				5D237B601C20108800293BDD /* groundDirt.png in Resources */,
 				5D237BAD1C20108800293BDD /* UIbg.png in Resources */,
 				5D237C031C204FDB00293BDD /* spark.png in Resources */,
 				5D237B991C20108800293BDD /* rockGrass.png in Resources */,
-				5D237B5F1C20108800293BDD /* background.png in Resources */,
 				5D237B761C20108800293BDD /* letterR.png in Resources */,
 				5D237B7D1C20108800293BDD /* letterY.png in Resources */,
 				5D237B811C20108800293BDD /* number2.png in Resources */,
@@ -521,7 +498,6 @@
 				5D237BA51C20108800293BDD /* medalGold.png in Resources */,
 				5D237BB71C20108800293BDD /* kenvector_future_thin.ttf in Resources */,
 				5D237B691C20108800293BDD /* letterE.png in Resources */,
-				5D237B631C20108800293BDD /* groundRock.png in Resources */,
 				5D237B661C20108800293BDD /* letterB.png in Resources */,
 				5D237BA41C20108800293BDD /* medalBronze.png in Resources */,
 				5D237B951C20108800293BDD /* puffLarge@2x.png in Resources */,

@@ -23,8 +23,19 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 - (id)init {
     self = [super initWithImageNamed:@"planeBlue1"];
     if (self) {
-        // Setup physics body.
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width * 0.5];
+        // Setup physics body with path.
+        CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
+        CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, NULL, 43 - offsetX, 18 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 34 - offsetX, 36 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 11 - offsetX, 35 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 0 - offsetX, 28 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 10 - offsetX, 4 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 29 - offsetX, 0 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 37 - offsetX, 5 - offsetY);
+        CGPathCloseSubpath(path);
+        self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         
         // Init array to hold animation actions.
         _planeAnimations = [[NSMutableArray alloc] init];
@@ -32,8 +43,8 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
         self.physicsBody.mass = 0.08;
         
         // Load animation plist file.
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Plane Animations" ofType:@"plist"];
-        NSDictionary *animations = [NSDictionary dictionaryWithContentsOfFile:path];
+        NSString *animationPlistPath = [[NSBundle mainBundle] pathForResource:@"Plane Animations" ofType:@"plist"];
+        NSDictionary *animations = [NSDictionary dictionaryWithContentsOfFile:animationPlistPath];
         for (NSString *key in animations) {
             [self.planeAnimations addObject:[self animationFromArray:[animations objectForKey:key] withDuration:0.4]];
         }
