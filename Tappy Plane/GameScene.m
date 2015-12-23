@@ -49,27 +49,28 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
             [backgroudTiles addObject:[SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]]];
         }
         _background = [[ScrollingLayer alloc] initWithTiles:backgroudTiles];
-        _background.position = CGPointZero;
         _background.horizontalScrollSpeed = -60;
         _background.scrolling = YES;
+        _background.zPosition = -1;
         [_world addChild:_background];
         
         // Setup player.
         _player = [[Plane alloc] init];
         _player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
-        
         _player.physicsBody.affectedByGravity = NO;
+
         [_world addChild:_player];
-        _player.engineRunning = YES;
         
         // Setup foreground.
         _foreground = [[ScrollingLayer alloc] initWithTiles:@[[self generateGroundTile],
                                                                 [self generateGroundTile],
                                                                 [self generateGroundTile]]];
-        _foreground.position = CGPointZero;
         _foreground.horizontalScrollSpeed = -80;
         _foreground.scrolling = YES;
         [_world addChild:_foreground];
+        
+        // Start a new game.
+        [self newGame];
     }
     
     return self;
@@ -167,16 +168,12 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     // Reset layers.
     self.foreground.position = CGPointZero;
     [self.foreground layoutTiles];
-    self.background.position = CGPointZero;
+    self.background.position = CGPointMake(0, 30);
     [self.background layoutTiles];
     // Reset plane.
     self.player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
-    self.player.crashed = NO;
-    self.player.engineRunning = YES;
     self.player.physicsBody.affectedByGravity = NO;
-    self.player.physicsBody.velocity = CGVectorMake(0.0, 0.0);
-    self.player.zRotation = 0.0;
-    self.player.physicsBody.angularVelocity = 0.0;
+    [self.player reset];
 }
 
 

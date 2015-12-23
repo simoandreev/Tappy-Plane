@@ -56,11 +56,12 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
         NSString *particleFile = [[NSBundle mainBundle] pathForResource:@"PlanePuffTrail" ofType:@"sks"];
         _puffTrailEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:particleFile];
         _puffTrailEmitter.position = CGPointMake(-self.size.width * 0.5, -5);
+        self.puffTrailEmitter.zPosition = 1;
         [self addChild:self.puffTrailEmitter];
         self.puffTrailBirthRate = _puffTrailEmitter.particleBirthRate;
         self.puffTrailEmitter.particleBirthRate = 0;
         
-        [self setRandomColour];
+        //[self setRandomColour];
     }
     return self;
 }
@@ -121,6 +122,9 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     if (self.accelerating) {
         [self.physicsBody applyForce:CGVectorMake(0.0, 100)];
     }
+    if(!self.crashed) {
+        self.zRotation = fmaxf(fminf(self.physicsBody.velocity.dy, 400), -400) / 400;
+    }
 }
 
 - (void)collide:(SKPhysicsBody *)body
@@ -134,4 +138,14 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     }
 }
 
+- (void)reset
+{
+    // Set plane's initial values.
+    self.crashed = NO;
+    self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
+    self.zRotation = 0.0;
+    self.physicsBody.angularVelocity = 0.0;
+    [self setRandomColour];
+    self.engineRunning = YES;
+}
 @end
