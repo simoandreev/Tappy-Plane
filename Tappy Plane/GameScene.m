@@ -10,6 +10,7 @@
 #import "Plane.h"
 #import "ScrollingLayer.h"
 #import "Constants.h"
+#import "ObstacleLayer.h"
 
 @interface GameScene ()
 
@@ -17,6 +18,7 @@
 @property (nonatomic) SKNode *world;
 @property (nonatomic) ScrollingLayer *background;
 @property (nonatomic) ScrollingLayer *foreground;
+@property (nonatomic) ObstacleLayer *obstacles;
 
 @end
 
@@ -69,6 +71,14 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         _foreground.scrolling = YES;
         [_world addChild:_foreground];
         
+        // Setup obstacle layer.
+        _obstacles = [[ObstacleLayer alloc] init];
+        _obstacles.horizontalScrollSpeed = -80;
+        _obstacles.scrolling = YES;
+        _obstacles.floor = 0.0;
+        _obstacles.ceiling = self.size.height;
+        [_world addChild:_obstacles];
+        
         // Start a new game.
         [self newGame];
     }
@@ -86,6 +96,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         else{
             _player.physicsBody.affectedByGravity = YES;
             self.player.accelerating = YES;
+            self.obstacles.scrolling = YES;
         }
     }
 }
@@ -109,6 +120,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     if (!self.player.crashed) {
         [self.background updateWithTimeElpased:timeElapsed];
         [self.foreground updateWithTimeElpased:timeElapsed];
+        [self.obstacles updateWithTimeElpased:timeElapsed];
     }
 }
 
@@ -168,6 +180,11 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     // Reset layers.
     self.foreground.position = CGPointZero;
     [self.foreground layoutTiles];
+    
+    self.obstacles.position = CGPointZero;
+    [self.obstacles reset];
+    self.obstacles.scrolling = NO;
+    
     self.background.position = CGPointMake(0, 30);
     [self.background layoutTiles];
     // Reset plane.

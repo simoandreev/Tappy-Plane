@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AEF1C2A93C1005F5C1C /* Constants.m */; };
+		5D0B8AF31C2AD9C8005F5C1C /* ObstacleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AF21C2AD9C8005F5C1C /* ObstacleLayer.m */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -54,14 +55,6 @@
 		5D237B881C20108800293BDD /* number9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B2A1C20108800293BDD /* number9.png */; };
 		5D237B951C20108800293BDD /* puffLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B381C20108800293BDD /* puffLarge@2x.png */; };
 		5D237B961C20108800293BDD /* puffSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B391C20108800293BDD /* puffSmall.png */; };
-		5D237B971C20108800293BDD /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3A1C20108800293BDD /* rock.png */; };
-		5D237B981C20108800293BDD /* rockDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3B1C20108800293BDD /* rockDown.png */; };
-		5D237B991C20108800293BDD /* rockGrass.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3C1C20108800293BDD /* rockGrass.png */; };
-		5D237B9A1C20108800293BDD /* rockGrassDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3D1C20108800293BDD /* rockGrassDown.png */; };
-		5D237B9B1C20108800293BDD /* rockIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3E1C20108800293BDD /* rockIce.png */; };
-		5D237B9C1C20108800293BDD /* rockIceDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B3F1C20108800293BDD /* rockIceDown.png */; };
-		5D237B9D1C20108800293BDD /* rockSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B401C20108800293BDD /* rockSnow.png */; };
-		5D237B9E1C20108800293BDD /* rockSnowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B411C20108800293BDD /* rockSnowDown.png */; };
 		5D237B9F1C20108800293BDD /* starBronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B421C20108800293BDD /* starBronze.png */; };
 		5D237BA01C20108800293BDD /* starGold.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B431C20108800293BDD /* starGold.png */; };
 		5D237BA11C20108800293BDD /* starSilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B441C20108800293BDD /* starSilver.png */; };
@@ -99,6 +92,8 @@
 /* Begin PBXFileReference section */
 		5D0B8AEE1C2A93C1005F5C1C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		5D0B8AEF1C2A93C1005F5C1C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		5D0B8AF11C2AD9C8005F5C1C /* ObstacleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleLayer.h; sourceTree = "<group>"; };
+		5D0B8AF21C2AD9C8005F5C1C /* ObstacleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleLayer.m; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -150,14 +145,6 @@
 		5D237B2A1C20108800293BDD /* number9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number9.png; sourceTree = "<group>"; };
 		5D237B381C20108800293BDD /* puffLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puffLarge@2x.png"; sourceTree = "<group>"; };
 		5D237B391C20108800293BDD /* puffSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffSmall.png; sourceTree = "<group>"; };
-		5D237B3A1C20108800293BDD /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
-		5D237B3B1C20108800293BDD /* rockDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockDown.png; sourceTree = "<group>"; };
-		5D237B3C1C20108800293BDD /* rockGrass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockGrass.png; sourceTree = "<group>"; };
-		5D237B3D1C20108800293BDD /* rockGrassDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockGrassDown.png; sourceTree = "<group>"; };
-		5D237B3E1C20108800293BDD /* rockIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockIce.png; sourceTree = "<group>"; };
-		5D237B3F1C20108800293BDD /* rockIceDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockIceDown.png; sourceTree = "<group>"; };
-		5D237B401C20108800293BDD /* rockSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockSnow.png; sourceTree = "<group>"; };
-		5D237B411C20108800293BDD /* rockSnowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockSnowDown.png; sourceTree = "<group>"; };
 		5D237B421C20108800293BDD /* starBronze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starBronze.png; sourceTree = "<group>"; };
 		5D237B431C20108800293BDD /* starGold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starGold.png; sourceTree = "<group>"; };
 		5D237B441C20108800293BDD /* starSilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starSilver.png; sourceTree = "<group>"; };
@@ -236,6 +223,8 @@
 				5D0B8AEF1C2A93C1005F5C1C /* Constants.m */,
 				5D237C041C2180F500293BDD /* ScrollingNode.h */,
 				5D237C051C2180F500293BDD /* ScrollingNode.m */,
+				5D0B8AF11C2AD9C8005F5C1C /* ObstacleLayer.h */,
+				5D0B8AF21C2AD9C8005F5C1C /* ObstacleLayer.m */,
 				5D237C071C21833D00293BDD /* ScrollingLayer.h */,
 				5D237C081C21833D00293BDD /* ScrollingLayer.m */,
 				5D237AEB1C200DC300293BDD /* GameScene.sks */,
@@ -274,14 +263,6 @@
 				5D237B201C20108800293BDD /* Numbers */,
 				5D237B381C20108800293BDD /* puffLarge@2x.png */,
 				5D237B391C20108800293BDD /* puffSmall.png */,
-				5D237B3A1C20108800293BDD /* rock.png */,
-				5D237B3B1C20108800293BDD /* rockDown.png */,
-				5D237B3C1C20108800293BDD /* rockGrass.png */,
-				5D237B3D1C20108800293BDD /* rockGrassDown.png */,
-				5D237B3E1C20108800293BDD /* rockIce.png */,
-				5D237B3F1C20108800293BDD /* rockIceDown.png */,
-				5D237B401C20108800293BDD /* rockSnow.png */,
-				5D237B411C20108800293BDD /* rockSnowDown.png */,
 				5D237B421C20108800293BDD /* starBronze.png */,
 				5D237B431C20108800293BDD /* starGold.png */,
 				5D237B441C20108800293BDD /* starSilver.png */,
@@ -454,7 +435,6 @@
 				5D237B7C1C20108800293BDD /* letterX.png in Resources */,
 				5D237B751C20108800293BDD /* letterQ.png in Resources */,
 				5D237B6A1C20108800293BDD /* letterF.png in Resources */,
-				5D237B9A1C20108800293BDD /* rockGrassDown.png in Resources */,
 				5D237B831C20108800293BDD /* number4.png in Resources */,
 				5D237BAA1C20108800293BDD /* tapTick.png in Resources */,
 				5D237B801C20108800293BDD /* number1.png in Resources */,
@@ -463,17 +443,13 @@
 				5D237B841C20108800293BDD /* number5.png in Resources */,
 				5D237BA31C20108800293BDD /* buttonSmall.png in Resources */,
 				5D237BAE1C20108800293BDD /* preview.png in Resources */,
-				5D237B9E1C20108800293BDD /* rockSnowDown.png in Resources */,
 				5D237BB61C20108800293BDD /* kenvector_future.ttf in Resources */,
 				5D237BA11C20108800293BDD /* starSilver.png in Resources */,
 				5D237BAF1C20108800293BDD /* sample.png in Resources */,
 				5D237BA01C20108800293BDD /* starGold.png in Resources */,
-				5D237B9C1C20108800293BDD /* rockIceDown.png in Resources */,
 				5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */,
 				5D237B781C20108800293BDD /* letterT.png in Resources */,
-				5D237B9D1C20108800293BDD /* rockSnow.png in Resources */,
 				5D237B7B1C20108800293BDD /* letterW.png in Resources */,
-				5D237B981C20108800293BDD /* rockDown.png in Resources */,
 				5D237B9F1C20108800293BDD /* starBronze.png in Resources */,
 				5D237AEC1C200DC300293BDD /* GameScene.sks in Resources */,
 				5D237B771C20108800293BDD /* letterS.png in Resources */,
@@ -481,7 +457,6 @@
 				5D237B731C20108800293BDD /* letterO.png in Resources */,
 				5D237BB21C20108800293BDD /* sheet.png in Resources */,
 				5D237BD11C201EFD00293BDD /* Graphics.atlas in Resources */,
-				5D237B9B1C20108800293BDD /* rockIce.png in Resources */,
 				5D237BFF1C2028CA00293BDD /* Plane Animations.plist in Resources */,
 				5D237B881C20108800293BDD /* number9.png in Resources */,
 				5D237BAC1C20108800293BDD /* textGetReady.png in Resources */,
@@ -492,7 +467,6 @@
 				5D237B6E1C20108800293BDD /* letterJ.png in Resources */,
 				5D237BAD1C20108800293BDD /* UIbg.png in Resources */,
 				5D237C031C204FDB00293BDD /* spark.png in Resources */,
-				5D237B991C20108800293BDD /* rockGrass.png in Resources */,
 				5D237B761C20108800293BDD /* letterR.png in Resources */,
 				5D237B7D1C20108800293BDD /* letterY.png in Resources */,
 				5D237B811C20108800293BDD /* number2.png in Resources */,
@@ -517,7 +491,6 @@
 				5D237BB41C20108800293BDD /* vector.svg in Resources */,
 				5D237B821C20108800293BDD /* number3.png in Resources */,
 				5D237B851C20108800293BDD /* number6.png in Resources */,
-				5D237B971C20108800293BDD /* rock.png in Resources */,
 				5D237B961C20108800293BDD /* puffSmall.png in Resources */,
 				5D237B721C20108800293BDD /* letterN.png in Resources */,
 				5D237B7E1C20108800293BDD /* letterZ.png in Resources */,
@@ -534,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0B8AF31C2AD9C8005F5C1C /* ObstacleLayer.m in Sources */,
 				5D237AEF1C200DC400293BDD /* GameViewController.m in Sources */,
 				5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */,
 				5D237C091C21833D00293BDD /* ScrollingLayer.m in Sources */,
