@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "Plane.h"
 #import "ScrollingLayer.h"
+#import "Constants.h"
 
 @interface GameScene ()
 
@@ -37,6 +38,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         // Setup world.
         _world = [SKNode node];
         [self addChild:_world];
+        self.physicsWorld.contactDelegate = self;
         
         // Setup physics.
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.5);
@@ -73,14 +75,20 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     return self;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     for (UITouch *touch in touches) {
-        //self.player.engineRunning = !self.player.engineRunning;
-        //[self.player setRandomColour];
-        _player.physicsBody.affectedByGravity = YES;
-        self.player.accelerating = YES;
+        if (self.player.crashed) {
+            //Reset game.
+            [self newGame];
+        }
+        else{
+            _player.physicsBody.affectedByGravity = YES;
+            self.player.accelerating = YES;
+        }
     }
 }
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
         self.player.accelerating = NO;
@@ -97,8 +105,10 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     }
     lastCallTime = currentTime;
     [self.player update];
-    [self.background updateWithTimeElpased:timeElapsed];
-    [self.foreground updateWithTimeElpased:timeElapsed];
+    if (!self.player.crashed) {
+        [self.background updateWithTimeElpased:timeElapsed];
+        [self.foreground updateWithTimeElpased:timeElapsed];
+    }
 }
 
 -(SKSpriteNode*)generateGroundTile
@@ -131,6 +141,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     CGPathAddLineToPoint(path, NULL, 18 - offsetX, 20 - offsetY);
     CGPathAddLineToPoint(path, NULL, 0 - offsetX, 18 - offsetY);
     sprite.physicsBody = [SKPhysicsBody bodyWithEdgeChainFromPath:path];
+    sprite.physicsBody.categoryBitMask = kTPCategoryGround;
     
 //    SKShapeNode *bodyShape = [SKShapeNode node];
 //    bodyShape.path = path;
@@ -140,5 +151,33 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     
     return sprite;
 }
+
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    if (contact.bodyA.categoryBitMask == kTPCategoryPlane) {
+        [self.player collide:contact.bodyB];
+    }
+    else if (contact.bodyB.categoryBitMask == kTPCategoryPlane) {
+        [self.player collide:contact.bodyA];
+    }
+}
+
+-(void)newGame
+{
+    // Reset layers.
+    self.foreground.position = CGPointZero;
+    [self.foreground layoutTiles];
+    self.background.position = CGPointZero;
+    [self.background layoutTiles];
+    // Reset plane.
+    self.player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+    self.player.crashed = NO;
+    self.player.engineRunning = YES;
+    self.player.physicsBody.affectedByGravity = NO;
+    self.player.physicsBody.velocity = CGVectorMake(0.0, 0.0);
+    self.player.zRotation = 0.0;
+    self.player.physicsBody.angularVelocity = 0.0;
+}
+
 
 @end

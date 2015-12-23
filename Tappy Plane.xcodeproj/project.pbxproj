@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AEF1C2A93C1005F5C1C /* Constants.m */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -96,6 +97,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D0B8AEE1C2A93C1005F5C1C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5D0B8AEF1C2A93C1005F5C1C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 				5D237AE91C200DC300293BDD /* GameScene.m */,
 				5D237BD21C20213100293BDD /* Plane.h */,
 				5D237BD31C20213100293BDD /* Plane.m */,
+				5D0B8AEE1C2A93C1005F5C1C /* Constants.h */,
+				5D0B8AEF1C2A93C1005F5C1C /* Constants.m */,
 				5D237C041C2180F500293BDD /* ScrollingNode.h */,
 				5D237C051C2180F500293BDD /* ScrollingNode.m */,
 				5D237C071C21833D00293BDD /* ScrollingLayer.h */,
@@ -532,6 +537,7 @@
 				5D237AEF1C200DC400293BDD /* GameViewController.m in Sources */,
 				5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */,
 				5D237C091C21833D00293BDD /* ScrollingLayer.m in Sources */,
+				5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */,
 				5D237BD41C20213100293BDD /* Plane.m in Sources */,
 				5D237AEA1C200DC300293BDD /* GameScene.m in Sources */,
 				5D237AE41C200DC300293BDD /* main.m in Sources */,

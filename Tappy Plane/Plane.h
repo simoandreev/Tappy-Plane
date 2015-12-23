@@ -12,8 +12,10 @@
 
 @property (nonatomic) BOOL engineRunning;
 @property (nonatomic) BOOL accelerating;
+@property (nonatomic) BOOL crashed;
 
 - (void)setRandomColour;
 - (void)update;
+- (void)collide:(SKPhysicsBody*)body;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Plane.h"
+#import "Constants.h"
 
 @interface Plane()
 
@@ -35,12 +36,14 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
         CGPathAddLineToPoint(path, NULL, 29 - offsetX, 0 - offsetY);
         CGPathAddLineToPoint(path, NULL, 37 - offsetX, 5 - offsetY);
         CGPathCloseSubpath(path);
-        self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
-        
+
+
         // Init array to hold animation actions.
         _planeAnimations = [[NSMutableArray alloc] init];
-        
+        self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         self.physicsBody.mass = 0.08;
+        self.physicsBody.categoryBitMask = kTPCategoryPlane;
+        self.physicsBody.contactTestBitMask = kTPCategoryGround;
         
         // Load animation plist file.
         NSString *animationPlistPath = [[NSBundle mainBundle] pathForResource:@"Plane Animations" ofType:@"plist"];
@@ -63,7 +66,7 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 }
 
 - (void)setEngineRunning:(BOOL)engineRunning {
-    _engineRunning = engineRunning;
+    engineRunning = engineRunning && !self.crashed;
     if (engineRunning) {
         self.puffTrailEmitter.targetNode = self.parent;
         [self actionForKey:kKeyPlaneAnimation].speed = 1;
@@ -74,12 +77,26 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     }
 }
 
+- (void)setAccelerating:(BOOL)accelerating
+{
+    _accelerating = accelerating && !self.crashed;
+}
+
 - (void)setRandomColour {
     [self removeActionForKey:kKeyPlaneAnimation];
     SKAction *animation = [self.planeAnimations objectAtIndex:arc4random_uniform(self.planeAnimations.count)];
     [self runAction:animation withKey:kKeyPlaneAnimation];
     if (!self.engineRunning) {
         [self actionForKey:kKeyPlaneAnimation].speed = 0;
+    }
+}
+
+- (void)setCrashed:(BOOL)crashed
+{
+    _crashed = crashed;
+    if (crashed) {
+        self.engineRunning = NO;
+        self.accelerating = NO;
     }
 }
 
@@ -103,6 +120,17 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 - (void)update {
     if (self.accelerating) {
         [self.physicsBody applyForce:CGVectorMake(0.0, 100)];
+    }
+}
+
+- (void)collide:(SKPhysicsBody *)body
+{
+    // Ignore collision if already crashed.
+    if (!self.crashed) {
+        if (body.categoryBitMask == kTPCategoryGround) {
+            // Hit the ground.
+            self.crashed = YES;
+        }
     }
 }
 
