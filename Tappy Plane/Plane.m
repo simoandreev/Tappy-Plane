@@ -17,7 +17,8 @@
 
 @end
 
-static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
+static NSString* const kTPKeyPlaneAnimation = @"PlaneAnimation";
+static const CGFloat kTPMaxAltitude = 300.0;
 
 @implementation Plane
 
@@ -43,7 +44,8 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         self.physicsBody.mass = 0.08;
         self.physicsBody.categoryBitMask = kTPCategoryPlane;
-        self.physicsBody.contactTestBitMask = kTPCategoryGround;
+        self.physicsBody.contactTestBitMask = kTPCategoryGround | kTPCategoryCollectable;
+        self.physicsBody.collisionBitMask = kTPCategoryGround;
         
         // Load animation plist file.
         NSString *animationPlistPath = [[NSBundle mainBundle] pathForResource:@"Plane Animations" ofType:@"plist"];
@@ -70,10 +72,10 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
     engineRunning = engineRunning && !self.crashed;
     if (engineRunning) {
         self.puffTrailEmitter.targetNode = self.parent;
-        [self actionForKey:kKeyPlaneAnimation].speed = 1;
+        [self actionForKey:kTPKeyPlaneAnimation].speed = 1;
         self.puffTrailEmitter.particleBirthRate = self.puffTrailBirthRate;
     } else {
-        [self actionForKey:kKeyPlaneAnimation].speed = 0;
+        [self actionForKey:kTPKeyPlaneAnimation].speed = 0;
         self.puffTrailEmitter.particleBirthRate = 0;
     }
 }
@@ -84,11 +86,11 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 }
 
 - (void)setRandomColour {
-    [self removeActionForKey:kKeyPlaneAnimation];
+    [self removeActionForKey:kTPKeyPlaneAnimation];
     SKAction *animation = [self.planeAnimations objectAtIndex:arc4random_uniform(self.planeAnimations.count)];
-    [self runAction:animation withKey:kKeyPlaneAnimation];
+    [self runAction:animation withKey:kTPKeyPlaneAnimation];
     if (!self.engineRunning) {
-        [self actionForKey:kKeyPlaneAnimation].speed = 0;
+        [self actionForKey:kTPKeyPlaneAnimation].speed = 0;
     }
 }
 
@@ -119,7 +121,7 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
 }
 
 - (void)update {
-    if (self.accelerating) {
+    if (self.accelerating && self.position.y < kTPMaxAltitude) {
         [self.physicsBody applyForce:CGVectorMake(0.0, 100)];
     }
     if(!self.crashed) {
@@ -135,6 +137,10 @@ static NSString* const kKeyPlaneAnimation = @"PlaneAnimation";
             // Hit the ground.
             self.crashed = YES;
         }
+        if (body.categoryBitMask == kTPCategoryCollectable) {
+            [body.node runAction:[SKAction removeFromParent]];
+        }
+        
     }
 }
 

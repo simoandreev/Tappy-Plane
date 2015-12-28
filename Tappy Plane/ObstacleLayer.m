@@ -18,8 +18,11 @@
 static const CGFloat kTPMarkerBuffer = 200.0;
 static NSString *const kTPKeyMountainUp = @"MountainUp";
 static NSString *const kTPKeyMountainDown = @"MountainDown";
+static NSString *const kTPKeyCollectableStar = @"CollectableStar";
 static const CGFloat kTPVerticalGap = 90.0;
 static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
+static const int kTPCollectableVerticalRange = 200.0;
+static const CGFloat kTPCollectableClearance = 50.0;
 
 @implementation ObstacleLayer
 
@@ -51,6 +54,15 @@ static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
     mountainUp.position = CGPointMake(self.marker, self.floor + (mountainUp.size.height * 0.5) - yAdjustment);
     mountainDown.position = CGPointMake(self.marker, mountainUp.position.y + mountainDown.size.height + kTPVerticalGap);
     
+    // Get collectable star node.
+    SKSpriteNode *collectable = [self getUnusedObjectForKey:kTPKeyCollectableStar];
+    // Position collectable.
+    CGFloat midPoint = mountainUp.position.y + (mountainUp.size.height * 0.5) + (kTPVerticalGap * 0.5);
+    CGFloat yPosition = midPoint + arc4random_uniform(kTPCollectableVerticalRange) - (kTPCollectableVerticalRange * 0.5);
+    yPosition = fmaxf(yPosition, self.floor + kTPCollectableClearance);
+    yPosition = fminf(yPosition, self.ceiling - kTPCollectableClearance);
+    collectable.position = CGPointMake(self.marker + (kTPSpaceBetweenObstacleSets * 0.5), yPosition);
+    
     // Reposition marker.
     self.marker += kTPSpaceBetweenObstacleSets;
 }
@@ -59,7 +71,7 @@ static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
 {
     SKSpriteNode *object = nil;
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Graphics"];
-    if (key == kTPKeyMountainUp) {
+    if ([key isEqualToString: kTPKeyMountainUp]) {
         object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrass"]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
@@ -71,8 +83,7 @@ static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
         object.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
         object.physicsBody.categoryBitMask = kTPCategoryGround;
         [self addChild:object];
-    }
-    else if (key == kTPKeyMountainDown) {
+    } else if ([key isEqualToString: kTPKeyMountainDown]) {
         object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrassDown"]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
@@ -83,6 +94,12 @@ static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
         CGPathCloseSubpath(path);
         object.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
         object.physicsBody.categoryBitMask = kTPCategoryGround;
+        [self addChild:object];
+    } else if ([key isEqualToString: kTPKeyCollectableStar]) {
+        object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"starGold"]];
+        object.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:object.size.width * 0.3];
+        object.physicsBody.categoryBitMask = kTPCategoryCollectable;
+        object.physicsBody.dynamic = NO;
         [self addChild:object];
     }
 
