@@ -11,6 +11,7 @@
 #import "ScrollingLayer.h"
 #import "Constants.h"
 #import "ObstacleLayer.h"
+#import "BitmapFontLabel.h"
 
 @interface GameScene ()
 
@@ -19,6 +20,8 @@
 @property (nonatomic) ScrollingLayer *background;
 @property (nonatomic) ScrollingLayer *foreground;
 @property (nonatomic) ObstacleLayer *obstacles;
+@property (nonatomic) BitmapFontLabel *scoreLabel;
+@property (nonatomic) NSInteger score;
 
 @end
 
@@ -58,9 +61,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         
         // Setup player.
         _player = [[Plane alloc] init];
-        _player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
         _player.physicsBody.affectedByGravity = NO;
-
         [_world addChild:_player];
         
         // Setup foreground.
@@ -73,17 +74,34 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         
         // Setup obstacle layer.
         _obstacles = [[ObstacleLayer alloc] init];
+        _obstacles.collectableDelegate = self;
         _obstacles.horizontalScrollSpeed = -80;
         _obstacles.scrolling = YES;
         _obstacles.floor = 0.0;
         _obstacles.ceiling = self.size.height;
         [_world addChild:_obstacles];
         
+        // Setup score label.
+        _scoreLabel = [[BitmapFontLabel alloc] initWithText:@"0" andFontName:@"number"];
+        _scoreLabel.position = CGPointMake(self.size.width * 0.5, self.size.height - 100);
+        [self addChild:_scoreLabel];
+        
         // Start a new game.
         [self newGame];
     }
     
     return self;
+}
+
+-(void)wasCollected:(NSInteger )point
+{
+    self.score += point *5;
+}
+
+-(void)setScore:(NSInteger)score
+{
+    _score = score;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)score];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -188,9 +206,12 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     self.background.position = CGPointMake(0, 30);
     [self.background layoutTiles];
     // Reset plane.
-    self.player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+    self.player.position = CGPointMake(self.size.width * 0.3, self.size.height * 0.5);
     self.player.physicsBody.affectedByGravity = NO;
     [self.player reset];
+    
+    // Reset score.
+    self.score = 0;
 }
 
 

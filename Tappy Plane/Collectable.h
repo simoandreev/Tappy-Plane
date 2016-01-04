@@ -11,7 +11,7 @@
 
 @protocol CollectableDelegate <NSObject>
 
--(void)wasCollected;
+-(void)wasCollected:(NSInteger)point;
 
 @end
 

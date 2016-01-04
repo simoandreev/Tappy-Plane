@@ -14,7 +14,7 @@
 {
     [self runAction:[SKAction removeFromParent]];
     if (self.delegate) {
-        [self.delegate wasCollected];
+        [self.delegate wasCollected:self.pointValue];
     }
 }
 

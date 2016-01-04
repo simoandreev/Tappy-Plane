@@ -10,6 +10,7 @@
 		5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AEF1C2A93C1005F5C1C /* Constants.m */; };
 		5D0B8AF31C2AD9C8005F5C1C /* ObstacleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AF21C2AD9C8005F5C1C /* ObstacleLayer.m */; };
 		5D0B8AF61C317064005F5C1C /* Collectable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AF51C317064005F5C1C /* Collectable.m */; };
+		5D0B8AF91C3AB0BB005F5C1C /* BitmapFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AF81C3AB0BB005F5C1C /* BitmapFontLabel.m */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -96,6 +97,8 @@
 		5D0B8AF21C2AD9C8005F5C1C /* ObstacleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleLayer.m; sourceTree = "<group>"; };
 		5D0B8AF41C317064005F5C1C /* Collectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collectable.h; sourceTree = "<group>"; };
 		5D0B8AF51C317064005F5C1C /* Collectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collectable.m; sourceTree = "<group>"; };
+		5D0B8AF71C3AB0BB005F5C1C /* BitmapFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapFontLabel.h; sourceTree = "<group>"; };
+		5D0B8AF81C3AB0BB005F5C1C /* BitmapFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitmapFontLabel.m; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				5D237AE91C200DC300293BDD /* GameScene.m */,
 				5D237BD21C20213100293BDD /* Plane.h */,
 				5D237BD31C20213100293BDD /* Plane.m */,
+				5D0B8AF71C3AB0BB005F5C1C /* BitmapFontLabel.h */,
+				5D0B8AF81C3AB0BB005F5C1C /* BitmapFontLabel.m */,
 				5D0B8AF41C317064005F5C1C /* Collectable.h */,
 				5D0B8AF51C317064005F5C1C /* Collectable.m */,
 				5D0B8AEE1C2A93C1005F5C1C /* Constants.h */,
@@ -518,6 +523,7 @@
 				5D237AEA1C200DC300293BDD /* GameScene.m in Sources */,
 				5D237AE41C200DC300293BDD /* main.m in Sources */,
 				5D237C061C2180F500293BDD /* ScrollingNode.m in Sources */,
+				5D0B8AF91C3AB0BB005F5C1C /* BitmapFontLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

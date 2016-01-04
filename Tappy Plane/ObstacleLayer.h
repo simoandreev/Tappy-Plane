@@ -7,11 +7,14 @@
 //
 
 #import "ScrollingNode.h"
+#import "Collectable.h"
 
 @interface ObstacleLayer : ScrollingNode
 
 @property (nonatomic) CGFloat floor;
 @property (nonatomic) CGFloat ceiling;
+
+@property (nonatomic, weak) id<CollectableDelegate> collectableDelegate;
 
 -(void)reset;
 
