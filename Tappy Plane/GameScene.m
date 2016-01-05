@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "ObstacleLayer.h"
 #import "BitmapFontLabel.h"
+#import "TilesetTextureProvider.h"
 
 @interface GameScene ()
 
@@ -106,7 +107,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    for (UITouch *touch in touches) {
+   // for (UITouch *touch in touches) {
         if (self.player.crashed) {
             //Reset game.
             [self newGame];
@@ -116,13 +117,13 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
             self.player.accelerating = YES;
             self.obstacles.scrolling = YES;
         }
-    }
+  //  }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    for (UITouch *touch in touches) {
+   // for (UITouch *touch in touches) {
         self.player.accelerating = NO;
-    }
+   // }
 }
 
 
@@ -195,8 +196,14 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 
 -(void)newGame
 {
+    // Randomize tileset.
+    [[TilesetTextureProvider getProvider] randomizeTileset];
+    
     // Reset layers.
     self.foreground.position = CGPointZero;
+    for (SKSpriteNode *node in self.foreground.children) {
+        node.texture = [[TilesetTextureProvider getProvider] getTextureForKey:@"ground"];
+    }
     [self.foreground layoutTiles];
     
     self.obstacles.position = CGPointZero;

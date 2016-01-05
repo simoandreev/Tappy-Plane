@@ -8,6 +8,7 @@
 
 #import "ObstacleLayer.h"
 #import "Constants.h"
+#import "TilesetTextureProvider.h"
 
 @interface ObstacleLayer()
 
@@ -72,7 +73,8 @@ static const CGFloat kTPCollectableClearance = 50.0;
     SKSpriteNode *object = nil;
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Graphics"];
     if ([key isEqualToString: kTPKeyMountainUp]) {
-        object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrass"]];
+        //object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrass"]];
+        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:@"mountainUp"]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
@@ -84,7 +86,8 @@ static const CGFloat kTPCollectableClearance = 50.0;
         object.physicsBody.categoryBitMask = kTPCategoryGround;
         [self addChild:object];
     } else if ([key isEqualToString: kTPKeyMountainDown]) {
-        object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrassDown"]];
+        //object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrassDown"]];
+        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:@"mountainDown"]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
@@ -134,6 +137,12 @@ static const CGFloat kTPCollectableClearance = 50.0;
     // Loop through child nodes and reposition for reuse.
     for (SKNode *node in self.children) {
         node.position = CGPointMake(-1000, 0);
+        if (node.name == kTPKeyMountainUp) {
+            ((SKSpriteNode*)node).texture = [[TilesetTextureProvider getProvider] getTextureForKey:@"mountainUp"];
+        }
+        if (node.name == kTPKeyMountainDown) {
+            ((SKSpriteNode*)node).texture = [[TilesetTextureProvider getProvider] getTextureForKey:@"mountainDown"];
+        }
     }
     // Reposition marker.
     if (self.scene) {
