@@ -67,7 +67,7 @@
         SKSpriteNode *letter;
         if (i < self.children.count) {
             // Reuse an existing node.
-            letter = [self.children objectAtIndex:i];
+            letter = (SKSpriteNode *)[self.children objectAtIndex:i];
             letter.texture = [atlas textureNamed:textureName];
             letter.size = letter.texture.size;
         } else {
@@ -75,7 +75,7 @@
             letter = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:textureName]];
             letter.anchorPoint = CGPointZero;
             [self addChild:letter];
-            
+        }
             letter.position = pos;
             pos.x += letter.size.width + self.letterSpacing;
             totalSize.width += letter.size.width + self.letterSpacing;
@@ -93,8 +93,6 @@
         for (SKNode *letter in self.children) {
             letter.position = CGPointMake(letter.position.x + adjustment.x, letter.position.y + adjustment.y);
         }
-    }
-    
 }
 
 @end

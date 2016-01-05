@@ -95,7 +95,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 
 -(void)wasCollected:(NSInteger )point
 {
-    self.score += point *5;
+    self.score += point *10;
 }
 
 -(void)setScore:(NSInteger)score
