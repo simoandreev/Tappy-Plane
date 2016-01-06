@@ -15,6 +15,12 @@
 #import "TilesetTextureProvider.h"
 #import "ButtonMenuPlay.h"
 
+typedef enum : NSUInteger {
+    GameReady,
+    GameRunning,
+    GameOver,
+} GameState;
+
 @interface GameScene ()
 
 @property (nonatomic) Plane *player;
@@ -25,6 +31,8 @@
 @property (nonatomic) BitmapFontLabel *scoreLabel;
 @property (nonatomic) NSInteger score;
 @property (nonatomic) CGRect fullSizeFrame;
+@property (nonatomic) GameOverMenu *gameOverMenu;
+@property (nonatomic) GameState gameState;
 
 @end
 
@@ -89,11 +97,15 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         _scoreLabel.position = CGPointMake(self.size.width * 0.5, self.size.height - 100);
         [self addChild:_scoreLabel];
         
-        // Setup test button.
-        ButtonMenuPlay *button = [ButtonMenuPlay spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
-        [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
-        button.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
-        [self addChild:button];
+//        // Setup test button.
+//        ButtonMenuPlay *button = [ButtonMenuPlay spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
+//        [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
+//        button.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+//        [self addChild:button];
+        
+        // Setup game over menu.
+        _gameOverMenu = [[GameOverMenu alloc] initWithSize:size];
+        _gameOverMenu.delegate = self;
         
         // Start a new game.
         [self newGame];
@@ -102,10 +114,10 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     return self;
 }
 
--(void)pressedPlayButton
-{
-    NSLog(@"Pressed the play button");
-}
+//-(void)pressedPlayButton
+//{
+//    NSLog(@"Pressed the play button");
+//}
 
 -(void)wasCollected:(NSInteger )point
 {
@@ -120,23 +132,21 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   // for (UITouch *touch in touches) {
-        if (self.player.crashed) {
-            //Reset game.
-            [self newGame];
-        }
-        else{
-            _player.physicsBody.affectedByGravity = YES;
-            self.player.accelerating = YES;
-            self.obstacles.scrolling = YES;
-        }
-  //  }
+    if (self.gameState == GameReady) {
+        self.player.physicsBody.affectedByGravity = YES;
+        self.obstacles.scrolling = YES;
+        self.gameState = GameRunning;
+    }
+    if (self.gameState == GameRunning) {
+        self.player.accelerating = YES;
+    }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-   // for (UITouch *touch in touches) {
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (self.gameState == GameRunning) {
         self.player.accelerating = NO;
-   // }
+    }
 }
 
 
@@ -149,7 +159,16 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     }
     lastCallTime = currentTime;
     [self.player update];
-    if (!self.player.crashed) {
+    if (self.gameState == GameRunning && self.player.crashed) {
+        // Player just crashed in last frame so trigger game over.
+        self.gameState = GameOver;
+        // Fade out score display.
+        [self.scoreLabel runAction:[SKAction fadeOutWithDuration:0.4]];
+        // Show game over menu.
+        [self addChild:self.gameOverMenu];
+        [self.gameOverMenu show];
+    }
+    if (self.gameState != GameOver) {
         [self.background updateWithTimeElpased:timeElapsed];
         [self.foreground updateWithTimeElpased:timeElapsed];
         [self.obstacles updateWithTimeElpased:timeElapsed];
@@ -232,7 +251,18 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     
     // Reset score.
     self.score = 0;
+    self.scoreLabel.alpha = 1.0;
+    
+    // Set game state to ready
+    self.gameState = GameReady;
+    
+    
 }
 
+-(void)pressedStartNewGameButton
+{
+    [self newGame];
+    [self.gameOverMenu removeFromParent];
+}
 
 @end
