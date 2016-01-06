@@ -13,6 +13,7 @@
 #import "ObstacleLayer.h"
 #import "BitmapFontLabel.h"
 #import "TilesetTextureProvider.h"
+#import "ButtonMenuPlay.h"
 
 @interface GameScene ()
 
@@ -23,6 +24,7 @@
 @property (nonatomic) ObstacleLayer *obstacles;
 @property (nonatomic) BitmapFontLabel *scoreLabel;
 @property (nonatomic) NSInteger score;
+@property (nonatomic) CGRect fullSizeFrame;
 
 @end
 
@@ -87,11 +89,22 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         _scoreLabel.position = CGPointMake(self.size.width * 0.5, self.size.height - 100);
         [self addChild:_scoreLabel];
         
+        // Setup test button.
+        ButtonMenuPlay *button = [ButtonMenuPlay spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
+        [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
+        button.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+        [self addChild:button];
+        
         // Start a new game.
         [self newGame];
     }
     
     return self;
+}
+
+-(void)pressedPlayButton
+{
+    NSLog(@"Pressed the play button");
 }
 
 -(void)wasCollected:(NSInteger )point
