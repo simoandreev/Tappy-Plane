@@ -210,7 +210,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     [self.obstacles reset];
     self.obstacles.scrolling = NO;
     
-    self.background.position = CGPointMake(0, 30);
+    self.background.position = CGPointZero;
     [self.background layoutTiles];
     // Reset plane.
     self.player.position = CGPointMake(self.size.width * 0.3, self.size.height * 0.5);

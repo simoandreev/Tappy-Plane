@@ -4,6 +4,10 @@
 <dict>
 	<key>Dirt</key>
 	<dict>
+		<key>mountainDownAlternate</key>
+		<string>MountainGrassDown</string>
+		<key>mountainUpAlternate</key>
+		<string>MountainGrass</string>
 		<key>ground</key>
 		<string>groundDirt</string>
 		<key>mountainUp</key>
@@ -13,6 +17,10 @@
 	</dict>
 	<key>Grass</key>
 	<dict>
+		<key>mountainUpAlternate</key>
+		<string>MountainDirt</string>
+		<key>mountainDownAlternate</key>
+		<string>MountainDirtDown</string>
 		<key>ground</key>
 		<string>groundGrass</string>
 		<key>mountainUp</key>
@@ -22,6 +30,10 @@
 	</dict>
 	<key>Ice</key>
 	<dict>
+		<key>mountainUpAlternate</key>
+		<string>MountainSnow</string>
+		<key>mountainDownAlternate</key>
+		<string>MountainSnowDown</string>
 		<key>ground</key>
 		<string>groundIce</string>
 		<key>mountainUp</key>
@@ -31,6 +43,10 @@
 	</dict>
 	<key>Snow</key>
 	<dict>
+		<key>mountainUpAlternate</key>
+		<string>MountainIce</string>
+		<key>mountainDownAlternate</key>
+		<string>MountainIceDown</string>
 		<key>ground</key>
 		<string>groundSnow</string>
 		<key>mountainUp</key>

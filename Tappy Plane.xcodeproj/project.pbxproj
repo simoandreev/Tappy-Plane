@@ -13,6 +13,7 @@
 		5D0B8AF91C3AB0BB005F5C1C /* BitmapFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AF81C3AB0BB005F5C1C /* BitmapFontLabel.m */; };
 		5D0B8AFB1C3BF7D1005F5C1C /* TilesetGraphics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8AFA1C3BF7D1005F5C1C /* TilesetGraphics.plist */; };
 		5D0B8AFE1C3BFFD4005F5C1C /* TilesetTextureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8AFD1C3BFFD4005F5C1C /* TilesetTextureProvider.m */; };
+		5D0B8B011C3D0D19005F5C1C /* ChallengeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B001C3D0D19005F5C1C /* ChallengeProvider.m */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -104,6 +105,8 @@
 		5D0B8AFA1C3BF7D1005F5C1C /* TilesetGraphics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TilesetGraphics.plist; sourceTree = "<group>"; };
 		5D0B8AFC1C3BFFD4005F5C1C /* TilesetTextureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TilesetTextureProvider.h; sourceTree = "<group>"; };
 		5D0B8AFD1C3BFFD4005F5C1C /* TilesetTextureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TilesetTextureProvider.m; sourceTree = "<group>"; };
+		5D0B8AFF1C3D0D19005F5C1C /* ChallengeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeProvider.h; sourceTree = "<group>"; };
+		5D0B8B001C3D0D19005F5C1C /* ChallengeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeProvider.m; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				5D0B8AFA1C3BF7D1005F5C1C /* TilesetGraphics.plist */,
 				5D0B8AFC1C3BFFD4005F5C1C /* TilesetTextureProvider.h */,
 				5D0B8AFD1C3BFFD4005F5C1C /* TilesetTextureProvider.m */,
+				5D0B8AFF1C3D0D19005F5C1C /* ChallengeProvider.h */,
+				5D0B8B001C3D0D19005F5C1C /* ChallengeProvider.m */,
 				5D0B8AEE1C2A93C1005F5C1C /* Constants.h */,
 				5D0B8AEF1C2A93C1005F5C1C /* Constants.m */,
 				5D237AE81C200DC300293BDD /* GameScene.h */,
@@ -529,6 +534,7 @@
 				5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */,
 				5D237BD41C20213100293BDD /* Plane.m in Sources */,
 				5D0B8AF61C317064005F5C1C /* Collectable.m in Sources */,
+				5D0B8B011C3D0D19005F5C1C /* ChallengeProvider.m in Sources */,
 				5D237AEA1C200DC300293BDD /* GameScene.m in Sources */,
 				5D237AE41C200DC300293BDD /* main.m in Sources */,
 				5D0B8AFE1C3BFFD4005F5C1C /* TilesetTextureProvider.m in Sources */,

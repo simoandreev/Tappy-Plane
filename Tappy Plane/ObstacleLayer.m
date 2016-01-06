@@ -9,6 +9,7 @@
 #import "ObstacleLayer.h"
 #import "Constants.h"
 #import "TilesetTextureProvider.h"
+#import "ChallengeProvider.h"
 
 @interface ObstacleLayer()
 
@@ -17,9 +18,6 @@
 @end
 
 static const CGFloat kTPMarkerBuffer = 200.0;
-static NSString *const kTPKeyMountainUp = @"MountainUp";
-static NSString *const kTPKeyMountainDown = @"MountainDown";
-static NSString *const kTPKeyCollectableStar = @"CollectableStar";
 static const CGFloat kTPVerticalGap = 90.0;
 static const CGFloat kTPSpaceBetweenObstacleSets = 180.0;
 static const int kTPCollectableVerticalRange = 200.0;
@@ -43,38 +41,50 @@ static const CGFloat kTPCollectableClearance = 50.0;
 
 -(void)addObstacleSet
 {
-    // Get mountain nodes.
-    SKSpriteNode *mountainUp = [self getUnusedObjectForKey:kTPKeyMountainUp];
-    SKSpriteNode *mountainDown = [self getUnusedObjectForKey:kTPKeyMountainDown];
+//    // Get mountain nodes.
+//    SKSpriteNode *mountainUp = [self getUnusedObjectForKey:kTPKeyMountainUp];
+//    SKSpriteNode *mountainDown = [self getUnusedObjectForKey:kTPKeyMountainDown];
+//    
+//    // Calculate maximum variation.
+//    CGFloat maxVariation = (mountainUp.size.height + mountainDown.size.height + kTPVerticalGap) - (self.ceiling - self.floor);
+//    CGFloat yAdjustment = (CGFloat)arc4random_uniform(maxVariation);
+//    
+//    // Postion mountain nodes.
+//    mountainUp.position = CGPointMake(self.marker, self.floor + (mountainUp.size.height * 0.5) - yAdjustment);
+//    mountainDown.position = CGPointMake(self.marker, mountainUp.position.y + mountainDown.size.height + kTPVerticalGap);
+//    
+//    // Get collectable star node.
+//    SKSpriteNode *collectable = [self getUnusedObjectForKey:kTPKeyCollectableStar];
+//    // Position collectable.
+//    CGFloat midPoint = mountainUp.position.y + (mountainUp.size.height * 0.5) + (kTPVerticalGap * 0.5);
+//    CGFloat yPosition = midPoint + arc4random_uniform(kTPCollectableVerticalRange) - (kTPCollectableVerticalRange * 0.5);
+//    yPosition = fmaxf(yPosition, self.floor + kTPCollectableClearance);
+//    yPosition = fminf(yPosition, self.ceiling - kTPCollectableClearance);
+//    collectable.position = CGPointMake(self.marker + (kTPSpaceBetweenObstacleSets * 0.5), yPosition);
+////  Reposition marker.
+//    self.marker +=  kTPSpaceBetweenObstacleSets;
     
-    // Calculate maximum variation.
-    CGFloat maxVariation = (mountainUp.size.height + mountainDown.size.height + kTPVerticalGap) - (self.ceiling - self.floor);
-    CGFloat yAdjustment = (CGFloat)arc4random_uniform(maxVariation);
     
-    // Postion mountain nodes.
-    mountainUp.position = CGPointMake(self.marker, self.floor + (mountainUp.size.height * 0.5) - yAdjustment);
-    mountainDown.position = CGPointMake(self.marker, mountainUp.position.y + mountainDown.size.height + kTPVerticalGap);
-    
-    // Get collectable star node.
-    SKSpriteNode *collectable = [self getUnusedObjectForKey:kTPKeyCollectableStar];
-    // Position collectable.
-    CGFloat midPoint = mountainUp.position.y + (mountainUp.size.height * 0.5) + (kTPVerticalGap * 0.5);
-    CGFloat yPosition = midPoint + arc4random_uniform(kTPCollectableVerticalRange) - (kTPCollectableVerticalRange * 0.5);
-    yPosition = fmaxf(yPosition, self.floor + kTPCollectableClearance);
-    yPosition = fminf(yPosition, self.ceiling - kTPCollectableClearance);
-    collectable.position = CGPointMake(self.marker + (kTPSpaceBetweenObstacleSets * 0.5), yPosition);
-    
+    NSArray *challenge = [[ChallengeProvider getProvider] getRandomChallenge];
+    CGFloat furthestItem = 0;
+    for (ChallengeItem *item in challenge) {
+        SKSpriteNode *object = [self getUnusedObjectForKey:item.obstacleKey];
+        object.position = CGPointMake(item.position.x + self.marker, item.position.y);
+        if (item.position.x > furthestItem) {
+            furthestItem = item.position.x;
+        }
+    }
     // Reposition marker.
-    self.marker += kTPSpaceBetweenObstacleSets;
+    self.marker += furthestItem + kTPSpaceBetweenObstacleSets;
 }
 
 -(SKSpriteNode*)createObjectForKey:(NSString*)key
 {
     SKSpriteNode *object = nil;
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Graphics"];
-    if ([key isEqualToString: kTPKeyMountainUp]) {
+    if ([key isEqualToString: kTPKeyMountainUp] || [key isEqualToString: kTPKeyMountainUpAlternate]) {
         //object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrass"]];
-        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:@"mountainUp"]];
+        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:key]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
@@ -85,9 +95,9 @@ static const CGFloat kTPCollectableClearance = 50.0;
         object.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
         object.physicsBody.categoryBitMask = kTPCategoryGround;
         [self addChild:object];
-    } else if ([key isEqualToString: kTPKeyMountainDown]) {
+    } else if ([key isEqualToString: kTPKeyMountainDown] || [key isEqualToString: kTPKeyMountainDownAlternate]) {
         //object = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"MountainGrassDown"]];
-        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:@"mountainDown"]];
+        object = [SKSpriteNode spriteNodeWithTexture:[[TilesetTextureProvider getProvider]getTextureForKey:key]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
@@ -137,11 +147,9 @@ static const CGFloat kTPCollectableClearance = 50.0;
     // Loop through child nodes and reposition for reuse.
     for (SKNode *node in self.children) {
         node.position = CGPointMake(-1000, 0);
-        if (node.name == kTPKeyMountainUp) {
-            ((SKSpriteNode*)node).texture = [[TilesetTextureProvider getProvider] getTextureForKey:@"mountainUp"];
-        }
-        if (node.name == kTPKeyMountainDown) {
-            ((SKSpriteNode*)node).texture = [[TilesetTextureProvider getProvider] getTextureForKey:@"mountainDown"];
+        if (node.name == kTPKeyMountainUp || node.name == kTPKeyMountainDown
+            || node.name == kTPKeyMountainUpAlternate || node.name == kTPKeyMountainDownAlternate) {
+            ((SKSpriteNode*)node).texture = [[TilesetTextureProvider getProvider] getTextureForKey:node.name];
         }
     }
     // Reposition marker.
