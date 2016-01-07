@@ -82,9 +82,9 @@
 {
     NSArray *tilesetKeys = [self.tilesets allKeys];
     // NSLog(@"tilesetKeys %@", tilesetKeys);
-    NSString *key = [tilesetKeys objectAtIndex:arc4random_uniform((uint)tilesetKeys.count)];
+    self.currentTilesetName = [tilesetKeys objectAtIndex:arc4random_uniform((uint)tilesetKeys.count)];
    // NSLog(@"Key %@", key);
-    self.currentTileset = [self.tilesets objectForKey:key];
+    self.currentTileset = [self.tilesets objectForKey:self.currentTilesetName];
    // NSLog(@"TileSet %@", self.currentTileset);
 }
 

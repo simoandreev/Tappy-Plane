@@ -18,5 +18,8 @@ NSString *const kTPKeyMountainDown = @"mountainDown";
 NSString *const kTPKeyMountainUpAlternate = @"mountainUpAlternate";
 NSString *const kTPKeyMountainDownAlternate = @"mountainDownAlternate";
 NSString *const kTPKeyCollectableStar = @"CollectableStar";
-
+NSString *const kTPTilesetGrass = @"Grass";
+NSString *const kTPTilesetDirt = @"Dirt";
+NSString *const kTPTilesetIce = @"Ice";
+NSString *const kTPTilesetSnow = @"Snow";
 @end

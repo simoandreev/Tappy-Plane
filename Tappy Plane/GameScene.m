@@ -14,6 +14,8 @@
 #import "BitmapFontLabel.h"
 #import "TilesetTextureProvider.h"
 #import "ButtonMenuPlay.h"
+#import "GetReadyMenu.h"
+#import "WeatherLayer.h"
 
 typedef enum : NSUInteger {
     GameReady,
@@ -33,10 +35,14 @@ typedef enum : NSUInteger {
 @property (nonatomic) CGRect fullSizeFrame;
 @property (nonatomic) GameOverMenu *gameOverMenu;
 @property (nonatomic) GameState gameState;
+@property (nonatomic) NSInteger bestScore;
+@property (nonatomic) GetReadyMenu *getReadyMenu;
+@property (nonatomic) WeatherLayer *weather;
 
 @end
 
 static const CGFloat kMinFPS = 10.0 / 60.0;
+static NSString *const kTPKeyBestScore = @"BestScore";
 
 @implementation GameScene
  
@@ -75,6 +81,10 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         _player.physicsBody.affectedByGravity = NO;
         [_world addChild:_player];
         
+        // Setup weather.
+        //_weather = [[WeatherLayer alloc] initWithSize:self.size];
+        //[_world addChild:_weather];
+        
         // Setup foreground.
         _foreground = [[ScrollingLayer alloc] initWithTiles:@[[self generateGroundTile],
                                                                 [self generateGroundTile],
@@ -85,6 +95,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         
         // Setup obstacle layer.
         _obstacles = [[ObstacleLayer alloc] init];
+        _obstacles.zPosition = -1;
         _obstacles.collectableDelegate = self;
         _obstacles.horizontalScrollSpeed = -80;
         _obstacles.scrolling = YES;
@@ -97,6 +108,9 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         _scoreLabel.position = CGPointMake(self.size.width * 0.5, self.size.height - 100);
         [self addChild:_scoreLabel];
         
+        // Load best score.
+        self.bestScore = [[NSUserDefaults standardUserDefaults] integerForKey:kTPKeyBestScore];
+        
 //        // Setup test button.
 //        ButtonMenuPlay *button = [ButtonMenuPlay spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
 //        [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
@@ -106,6 +120,10 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
         // Setup game over menu.
         _gameOverMenu = [[GameOverMenu alloc] initWithSize:size];
         _gameOverMenu.delegate = self;
+        
+        // Setup get ready menu.
+        _getReadyMenu = [[GetReadyMenu alloc] initWithSize:size andPlanePosition:CGPointMake(self.size.width * 0.3, self.size.height * 0.5)];
+        [self addChild:_getReadyMenu];
         
         // Start a new game.
         [self newGame];
@@ -121,7 +139,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 
 -(void)wasCollected:(NSInteger )point
 {
-    self.score += point *10;
+    self.score += point;
 }
 
 -(void)setScore:(NSInteger)score
@@ -133,6 +151,7 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.gameState == GameReady) {
+        [self.getReadyMenu hide];
         self.player.physicsBody.affectedByGravity = YES;
         self.obstacles.scrolling = YES;
         self.gameState = GameRunning;
@@ -149,6 +168,12 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     }
 }
 
+-(void)bump
+{
+    SKAction *bump = [SKAction sequence:@[[SKAction moveBy:CGVectorMake(-5, -4) duration:0.1],
+                                          [SKAction moveTo:CGPointZero duration:0.1]]];
+    [self.world runAction:bump];
+}
 
 -(void)update:(NSTimeInterval)currentTime
 {
@@ -161,18 +186,27 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     [self.player update];
     if (self.gameState == GameRunning && self.player.crashed) {
         // Player just crashed in last frame so trigger game over.
-        self.gameState = GameOver;
-        // Fade out score display.
-        [self.scoreLabel runAction:[SKAction fadeOutWithDuration:0.4]];
-        // Show game over menu.
-        [self addChild:self.gameOverMenu];
-        [self.gameOverMenu show];
+        [self bump];
+        [self gameOver];
     }
     if (self.gameState != GameOver) {
         [self.background updateWithTimeElpased:timeElapsed];
         [self.foreground updateWithTimeElpased:timeElapsed];
         [self.obstacles updateWithTimeElpased:timeElapsed];
     }
+}
+
+-(MedalType)getMedalForCurrentScore
+{
+    NSInteger adjustedScore = self.score;
+    if (adjustedScore >= 45) {
+        return MedalGold;
+    } else if (adjustedScore >= 25) {
+        return MedalSilver;
+    } else if (adjustedScore >= 10) {
+        return MedalBronze;
+    }
+    return MedalNone;
 }
 
 -(SKSpriteNode*)generateGroundTile
@@ -231,6 +265,26 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     // Randomize tileset.
     [[TilesetTextureProvider getProvider] randomizeTileset];
     
+    // Set weather conditions.
+    NSString *tilesetName = [TilesetTextureProvider getProvider].currentTilesetName;
+    //NSLog(@"TilseSet Name is :%@", tilesetName);
+    self.weather.conditions = WeatherClear;
+    _weather = [[WeatherLayer alloc] initWithSize:self.size];
+    [_world addChild:_weather];
+    
+    if ([tilesetName isEqualToString:kTPTilesetIce] || [tilesetName isEqualToString:kTPTilesetSnow]) {
+        // 1 in 2 chance for snow on snow and ice tilesets.
+        if (arc4random_uniform(2) == 0) {
+            self.weather.conditions = WeatherSnowing;
+        }
+    }
+    if ([tilesetName isEqualToString:kTPTilesetGrass] || [tilesetName isEqualToString:kTPTilesetDirt]) {
+        // 1 in 3 chance for rain on dirt and grass tilesets.
+        if (arc4random_uniform(3) == 0) {
+            self.weather.conditions = WeatherRaining;
+        }
+    }
+    
     // Reset layers.
     self.foreground.position = CGPointZero;
     for (SKSpriteNode *node in self.foreground.children) {
@@ -255,14 +309,47 @@ static const CGFloat kMinFPS = 10.0 / 60.0;
     
     // Set game state to ready
     self.gameState = GameReady;
-    
-    
+}
+
+-(void)gameOver
+{
+    // Update game state.
+    self.gameState = GameOver;
+    // Fade out score display.
+    [self.scoreLabel runAction:[SKAction fadeOutWithDuration:0.4]];
+    // Set properties on game over menu
+    self.gameOverMenu.score = self.score;
+    self.gameOverMenu.medal = [self getMedalForCurrentScore];
+    // Updtate best score.
+    if (self.score > self.bestScore) {
+        self.bestScore = self.score;
+        [[NSUserDefaults standardUserDefaults] setInteger:self.bestScore forKey:kTPKeyBestScore];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    self.gameOverMenu.bestScore = self.bestScore;
+    // Show game over menu.
+    [self addChild:self.gameOverMenu];
+    [self.gameOverMenu show];
 }
 
 -(void)pressedStartNewGameButton
 {
-    [self newGame];
-    [self.gameOverMenu removeFromParent];
+    SKSpriteNode *blackRectangle = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:self.size];
+    
+    blackRectangle.anchorPoint = CGPointZero;
+    blackRectangle.alpha = 0.0;
+    [self addChild:blackRectangle];
+    SKAction *startNewGame = [SKAction runBlock:^{
+        [self.weather removeFromParent];
+        [self newGame];
+        [self.gameOverMenu removeFromParent];
+        [self.getReadyMenu show];
+    }];
+    SKAction *fadeTransition = [SKAction sequence:@[[SKAction fadeInWithDuration:0.4],
+                                                    startNewGame,
+                                                    [SKAction fadeOutWithDuration:0.6],
+                                                    [SKAction removeFromParent]]];
+    [blackRectangle runAction:fadeTransition];
 }
 
 @end

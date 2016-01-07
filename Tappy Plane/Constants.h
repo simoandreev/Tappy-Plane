@@ -18,5 +18,8 @@ extern NSString *const kTPKeyMountainDown;
 extern NSString *const kTPKeyCollectableStar;
 extern NSString *const kTPKeyMountainUpAlternate;
 extern NSString *const kTPKeyMountainDownAlternate;
-
+extern NSString *const kTPTilesetGrass;
+extern NSString *const kTPTilesetDirt;
+extern NSString *const kTPTilesetIce;
+extern NSString *const kTPTilesetSnow;
 @end

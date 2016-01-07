@@ -16,6 +16,10 @@
 		5D0B8B011C3D0D19005F5C1C /* ChallengeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B001C3D0D19005F5C1C /* ChallengeProvider.m */; };
 		5D0B8B061C3D334D005F5C1C /* ButtonMenuPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B051C3D334D005F5C1C /* ButtonMenuPlay.m */; };
 		5D0B8B091C3D527E005F5C1C /* GameOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B081C3D527E005F5C1C /* GameOverMenu.m */; };
+		5D0B8B0C1C3E5CA5005F5C1C /* GetReadyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B0B1C3E5CA5005F5C1C /* GetReadyMenu.m */; };
+		5D0B8B0F1C3E688F005F5C1C /* SnowEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B0E1C3E688F005F5C1C /* SnowEffect.sks */; };
+		5D0B8B111C3E6938005F5C1C /* RainEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B101C3E6938005F5C1C /* RainEffect.sks */; };
+		5D0B8B141C3E6A8A005F5C1C /* WeatherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -30,10 +34,6 @@
 		5D237BA11C20108800293BDD /* starSilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B441C20108800293BDD /* starSilver.png */; };
 		5D237BA21C20108800293BDD /* buttonLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B461C20108800293BDD /* buttonLarge.png */; };
 		5D237BA31C20108800293BDD /* buttonSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B471C20108800293BDD /* buttonSmall.png */; };
-		5D237BA71C20108800293BDD /* tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B4B1C20108800293BDD /* tap.png */; };
-		5D237BA81C20108800293BDD /* tapLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B4C1C20108800293BDD /* tapLeft.png */; };
-		5D237BA91C20108800293BDD /* tapRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B4D1C20108800293BDD /* tapRight.png */; };
-		5D237BAA1C20108800293BDD /* tapTick.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B4E1C20108800293BDD /* tapTick.png */; };
 		5D237BAE1C20108800293BDD /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B521C20108800293BDD /* preview.png */; };
 		5D237BAF1C20108800293BDD /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B531C20108800293BDD /* sample.png */; };
 		5D237BB01C20108800293BDD /* planes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D237B551C20108800293BDD /* planes.png */; };
@@ -71,6 +71,12 @@
 		5D0B8B051C3D334D005F5C1C /* ButtonMenuPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonMenuPlay.m; sourceTree = "<group>"; };
 		5D0B8B071C3D527E005F5C1C /* GameOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverMenu.h; sourceTree = "<group>"; };
 		5D0B8B081C3D527E005F5C1C /* GameOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverMenu.m; sourceTree = "<group>"; };
+		5D0B8B0A1C3E5CA5005F5C1C /* GetReadyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetReadyMenu.h; sourceTree = "<group>"; };
+		5D0B8B0B1C3E5CA5005F5C1C /* GetReadyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetReadyMenu.m; sourceTree = "<group>"; };
+		5D0B8B0E1C3E688F005F5C1C /* SnowEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowEffect.sks; sourceTree = "<group>"; };
+		5D0B8B101C3E6938005F5C1C /* RainEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainEffect.sks; sourceTree = "<group>"; };
+		5D0B8B121C3E6A8A005F5C1C /* WeatherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherLayer.h; sourceTree = "<group>"; };
+		5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherLayer.m; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,10 +96,6 @@
 		5D237B441C20108800293BDD /* starSilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starSilver.png; sourceTree = "<group>"; };
 		5D237B461C20108800293BDD /* buttonLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLarge.png; sourceTree = "<group>"; };
 		5D237B471C20108800293BDD /* buttonSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonSmall.png; sourceTree = "<group>"; };
-		5D237B4B1C20108800293BDD /* tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tap.png; sourceTree = "<group>"; };
-		5D237B4C1C20108800293BDD /* tapLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLeft.png; sourceTree = "<group>"; };
-		5D237B4D1C20108800293BDD /* tapRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapRight.png; sourceTree = "<group>"; };
-		5D237B4E1C20108800293BDD /* tapTick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapTick.png; sourceTree = "<group>"; };
 		5D237B521C20108800293BDD /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview.png; sourceTree = "<group>"; };
 		5D237B531C20108800293BDD /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
 		5D237B551C20108800293BDD /* planes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planes.png; sourceTree = "<group>"; };
@@ -127,6 +129,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0B8B0D1C3E6804005F5C1C /* Particle Effects */ = {
+			isa = PBXGroup;
+			children = (
+				5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */,
+				5D237C011C204FDB00293BDD /* spark.png */,
+				5D0B8B0E1C3E688F005F5C1C /* SnowEffect.sks */,
+				5D0B8B101C3E6938005F5C1C /* RainEffect.sks */,
+			);
+			name = "Particle Effects";
+			sourceTree = "<group>";
+		};
 		5D237AD61C200DC200293BDD = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +175,8 @@
 				5D0B8B051C3D334D005F5C1C /* ButtonMenuPlay.m */,
 				5D0B8B071C3D527E005F5C1C /* GameOverMenu.h */,
 				5D0B8B081C3D527E005F5C1C /* GameOverMenu.m */,
+				5D0B8B0A1C3E5CA5005F5C1C /* GetReadyMenu.h */,
+				5D0B8B0B1C3E5CA5005F5C1C /* GetReadyMenu.m */,
 				5D0B8AF71C3AB0BB005F5C1C /* BitmapFontLabel.h */,
 				5D0B8AF81C3AB0BB005F5C1C /* BitmapFontLabel.m */,
 				5D0B8AF41C317064005F5C1C /* Collectable.h */,
@@ -175,6 +190,8 @@
 				5D237AEB1C200DC300293BDD /* GameScene.sks */,
 				5D237AED1C200DC300293BDD /* GameViewController.h */,
 				5D237AEE1C200DC400293BDD /* GameViewController.m */,
+				5D0B8B121C3E6A8A005F5C1C /* WeatherLayer.h */,
+				5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */,
 				5D237AF01C200DC400293BDD /* Main.storyboard */,
 				5D237AF31C200DC400293BDD /* Assets.xcassets */,
 				5D237AF51C200DC400293BDD /* LaunchScreen.storyboard */,
@@ -189,8 +206,7 @@
 			children = (
 				5D237AE51C200DC300293BDD /* AppDelegate.h */,
 				5D237AE61C200DC300293BDD /* AppDelegate.m */,
-				5D237C001C204FDB00293BDD /* PlanePuffTrail.sks */,
-				5D237C011C204FDB00293BDD /* spark.png */,
+				5D0B8B0D1C3E6804005F5C1C /* Particle Effects */,
 				5D237AFE1C20108800293BDD /* PNG */,
 				5D237B521C20108800293BDD /* preview.png */,
 				5D237B531C20108800293BDD /* sample.png */,
@@ -228,10 +244,6 @@
 			children = (
 				5D237B461C20108800293BDD /* buttonLarge.png */,
 				5D237B471C20108800293BDD /* buttonSmall.png */,
-				5D237B4B1C20108800293BDD /* tap.png */,
-				5D237B4C1C20108800293BDD /* tapLeft.png */,
-				5D237B4D1C20108800293BDD /* tapRight.png */,
-				5D237B4E1C20108800293BDD /* tapTick.png */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -322,15 +334,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D237BA81C20108800293BDD /* tapLeft.png in Resources */,
-				5D237BAA1C20108800293BDD /* tapTick.png in Resources */,
 				5D237BA31C20108800293BDD /* buttonSmall.png in Resources */,
 				5D237BAE1C20108800293BDD /* preview.png in Resources */,
+				5D0B8B111C3E6938005F5C1C /* RainEffect.sks in Resources */,
 				5D237BB61C20108800293BDD /* kenvector_future.ttf in Resources */,
 				5D237BA11C20108800293BDD /* starSilver.png in Resources */,
 				5D237BAF1C20108800293BDD /* sample.png in Resources */,
 				5D237C021C204FDB00293BDD /* PlanePuffTrail.sks in Resources */,
 				5D237B9F1C20108800293BDD /* starBronze.png in Resources */,
+				5D0B8B0F1C3E688F005F5C1C /* SnowEffect.sks in Resources */,
 				5D237AEC1C200DC300293BDD /* GameScene.sks in Resources */,
 				5D237BB11C20108800293BDD /* planes.xml in Resources */,
 				5D237BB21C20108800293BDD /* sheet.png in Resources */,
@@ -340,11 +352,9 @@
 				5D237BB51C20108800293BDD /* vector.swf in Resources */,
 				5D237BB01C20108800293BDD /* planes.png in Resources */,
 				5D237C031C204FDB00293BDD /* spark.png in Resources */,
-				5D237BA71C20108800293BDD /* tap.png in Resources */,
 				5D237BB71C20108800293BDD /* kenvector_future_thin.ttf in Resources */,
 				5D237B951C20108800293BDD /* puffLarge@2x.png in Resources */,
 				5D237BA21C20108800293BDD /* buttonLarge.png in Resources */,
-				5D237BA91C20108800293BDD /* tapRight.png in Resources */,
 				5D237AF71C200DC400293BDD /* LaunchScreen.storyboard in Resources */,
 				5D237BB31C20108800293BDD /* sheet.xml in Resources */,
 				5D237BB41C20108800293BDD /* vector.svg in Resources */,
@@ -363,7 +373,9 @@
 			files = (
 				5D0B8AF31C2AD9C8005F5C1C /* ObstacleLayer.m in Sources */,
 				5D237AEF1C200DC400293BDD /* GameViewController.m in Sources */,
+				5D0B8B141C3E6A8A005F5C1C /* WeatherLayer.m in Sources */,
 				5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */,
+				5D0B8B0C1C3E5CA5005F5C1C /* GetReadyMenu.m in Sources */,
 				5D237C091C21833D00293BDD /* ScrollingLayer.m in Sources */,
 				5D0B8AF01C2A93C1005F5C1C /* Constants.m in Sources */,
 				5D237BD41C20213100293BDD /* Plane.m in Sources */,

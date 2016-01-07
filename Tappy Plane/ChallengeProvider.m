@@ -49,7 +49,7 @@
 {
     _challenges = [NSMutableArray array];
     
-//    // Challenge 1
+    // Challenge 1
       NSMutableArray *challenge = [NSMutableArray array];
     [challenge addObject:[ChallengeItem challengeItemWithKey:kTPKeyMountainUp andPosition:CGPointMake(0, 95)]];
     [challenge addObject:[ChallengeItem challengeItemWithKey:kTPKeyMountainDown andPosition:CGPointMake(143, 250)]];
