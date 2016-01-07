@@ -16,6 +16,7 @@
 #import "ButtonMenuPlay.h"
 #import "GetReadyMenu.h"
 #import "WeatherLayer.h"
+#import "SoundManager.h"
 
 typedef enum : NSUInteger {
     GameReady,
@@ -53,6 +54,8 @@ static NSString *const kTPKeyBestScore = @"BestScore";
 
 - (id)initWithSize:(CGSize)size {
     if(self = [super initWithSize:size]) {
+        // Init audio.
+        [[SoundManager sharedManager] prepareToPlayWithSound:@"Crunch.caf"];
         SKTextureAtlas *graphics = [SKTextureAtlas atlasNamed:@"Graphics"];
         
         self.backgroundColor = [SKColor colorWithRed:0.835294118 green:0.929411765 blue:0.968627451 alpha:1.0];

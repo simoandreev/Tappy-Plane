@@ -8,10 +8,12 @@
 
 #import "Collectable.h"
 
+
 @implementation Collectable
 
 -(void)collect
 {
+    [self.collectionSound play];
     [self runAction:[SKAction removeFromParent]];
     if (self.delegate) {
         [self.delegate wasCollected:self.pointValue];

@@ -9,6 +9,7 @@
 #import "GameOverMenu.h"
 #import "BitmapFontLabel.h"
 #import "ButtonMenuPlay.h"
+#import "SoundManager.h"
 
 @interface GameOverMenu()
 
@@ -88,6 +89,7 @@
         
         // Setup play button.
         _playButton = [ButtonMenuPlay spriteNodeWithTexture:[atlas textureNamed:@"buttonPlay"]];
+        _playButton.pressedSound =  [Sound soundNamed:@"Click.caf"];
         _playButton.position = CGPointMake(CGRectGetMidX(panelBackground.frame), CGRectGetMinY(panelBackground.frame) - 25);
         [_playButton setPressedTarget:self withAction:@selector(pressedPlayButton)];
         [self addChild:_playButton];

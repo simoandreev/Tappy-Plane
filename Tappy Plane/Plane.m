@@ -14,6 +14,8 @@
 @property (nonatomic) NSMutableArray *planeAnimations; // Holds animation actions.
 @property (nonatomic) SKEmitterNode *puffTrailEmitter;
 @property (nonatomic) CGFloat puffTrailBirthRate;
+@property (nonatomic) SKAction *crashTintAction;
+@property (nonatomic) Sound *engineSound;
 
 @end
 
@@ -63,18 +65,32 @@ static const CGFloat kTPMaxAltitude = 300.0;
         self.puffTrailBirthRate = _puffTrailEmitter.particleBirthRate;
         self.puffTrailEmitter.particleBirthRate = 0;
         
+        // Setup action to tint plane when it crashes.
+        SKAction *tint = [SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:0.8 duration:0.0];
+        SKAction *removeTint = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.2];
+        _crashTintAction = [SKAction sequence:@[tint, removeTint]];
+        
+        // Setup engine sound.
+        _engineSound = [Sound soundNamed:@"Engine.caf"];
+        _engineSound.looping = YES;
+        
         //[self setRandomColour];
     }
     return self;
 }
 
-- (void)setEngineRunning:(BOOL)engineRunning {
-    engineRunning = engineRunning && !self.crashed;
+- (void)setEngineRunning:(BOOL)engineRunning
+{
+    _engineRunning = engineRunning && !self.crashed;
     if (engineRunning) {
+        [self.engineSound play];
+        [self.engineSound fadeIn:1.0];
         self.puffTrailEmitter.targetNode = self.parent;
         [self actionForKey:kTPKeyPlaneAnimation].speed = 1;
         self.puffTrailEmitter.particleBirthRate = self.puffTrailBirthRate;
-    } else {
+    }
+    else {
+        [self.engineSound fadeOut:0.5];
         [self actionForKey:kTPKeyPlaneAnimation].speed = 0;
         self.puffTrailEmitter.particleBirthRate = 0;
     }
@@ -126,6 +142,7 @@ static const CGFloat kTPMaxAltitude = 300.0;
     }
     if(!self.crashed) {
         self.zRotation = fmaxf(fminf(self.physicsBody.velocity.dy, 400), -400) / 400;
+        self.engineSound.volume = 0.25 + fmaxf(fminf(self.physicsBody.velocity.dy,300), 0) / 300 * 0.75;
     }
 }
 
@@ -136,6 +153,8 @@ static const CGFloat kTPMaxAltitude = 300.0;
         if (body.categoryBitMask == kTPCategoryGround) {
             // Hit the ground.
             self.crashed = YES;
+            [self runAction:self.crashTintAction];
+            [[SoundManager sharedManager] playSound:@"Crunch.caf"];
         }
         if (body.categoryBitMask == kTPCategoryCollectable) {
             if ([body.node respondsToSelector:@selector(collect)]) {

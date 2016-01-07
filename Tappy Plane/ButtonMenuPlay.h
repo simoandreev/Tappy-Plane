@@ -7,12 +7,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "SoundManager.h"
 
 @interface ButtonMenuPlay : SKSpriteNode
 
 @property (nonatomic) CGFloat pressedScale;
 @property (nonatomic, readonly, weak) id pressedTarget;
 @property (nonatomic, readonly) SEL pressedAction;
+@property (nonatomic) Sound *pressedSound;
 
 -(void)setPressedTarget:(id)pressedTarget withAction:(SEL)pressedAction;
 

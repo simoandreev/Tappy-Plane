@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "SoundManager.h"
 
 @protocol CollectableDelegate <NSObject>
 
@@ -19,6 +19,7 @@
 
 @property (nonatomic, weak) id<CollectableDelegate> delegate;
 @property (nonatomic) NSInteger pointValue;
+@property (nonatomic) Sound *collectionSound;
 
 -(void)collect;
 

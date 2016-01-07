@@ -20,6 +20,12 @@
 		5D0B8B0F1C3E688F005F5C1C /* SnowEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B0E1C3E688F005F5C1C /* SnowEffect.sks */; };
 		5D0B8B111C3E6938005F5C1C /* RainEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B101C3E6938005F5C1C /* RainEffect.sks */; };
 		5D0B8B141C3E6A8A005F5C1C /* WeatherLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */; };
+		5D0B8B251C3EB148005F5C1C /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B8B241C3EB148005F5C1C /* SoundManager.m */; };
+		5D0B8B361C3EBF66005F5C1C /* Click.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B311C3EBF26005F5C1C /* Click.caf */; };
+		5D0B8B371C3EBF66005F5C1C /* Collect.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B321C3EBF26005F5C1C /* Collect.caf */; };
+		5D0B8B381C3EBF66005F5C1C /* Crunch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B331C3EBF26005F5C1C /* Crunch.caf */; };
+		5D0B8B391C3EBF66005F5C1C /* Engine.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B341C3EBF26005F5C1C /* Engine.caf */; };
+		5D0B8B3A1C3EBF66005F5C1C /* Rain.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5D0B8B351C3EBF26005F5C1C /* Rain.caf */; };
 		5D237AE41C200DC300293BDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE31C200DC300293BDD /* main.m */; };
 		5D237AE71C200DC300293BDD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE61C200DC300293BDD /* AppDelegate.m */; };
 		5D237AEA1C200DC300293BDD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D237AE91C200DC300293BDD /* GameScene.m */; };
@@ -77,6 +83,13 @@
 		5D0B8B101C3E6938005F5C1C /* RainEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainEffect.sks; sourceTree = "<group>"; };
 		5D0B8B121C3E6A8A005F5C1C /* WeatherLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherLayer.h; sourceTree = "<group>"; };
 		5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherLayer.m; sourceTree = "<group>"; };
+		5D0B8B231C3EB148005F5C1C /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		5D0B8B241C3EB148005F5C1C /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		5D0B8B311C3EBF26005F5C1C /* Click.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Click.caf; sourceTree = "<group>"; };
+		5D0B8B321C3EBF26005F5C1C /* Collect.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Collect.caf; sourceTree = "<group>"; };
+		5D0B8B331C3EBF26005F5C1C /* Crunch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crunch.caf; sourceTree = "<group>"; };
+		5D0B8B341C3EBF26005F5C1C /* Engine.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Engine.caf; sourceTree = "<group>"; };
+		5D0B8B351C3EBF26005F5C1C /* Rain.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rain.caf; sourceTree = "<group>"; };
 		5D237ADF1C200DC200293BDD /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D237AE31C200DC300293BDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D237AE51C200DC300293BDD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -140,6 +153,18 @@
 			name = "Particle Effects";
 			sourceTree = "<group>";
 		};
+		5D0B8B151C3EAC1C005F5C1C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5D0B8B311C3EBF26005F5C1C /* Click.caf */,
+				5D0B8B321C3EBF26005F5C1C /* Collect.caf */,
+				5D0B8B331C3EBF26005F5C1C /* Crunch.caf */,
+				5D0B8B341C3EBF26005F5C1C /* Engine.caf */,
+				5D0B8B351C3EBF26005F5C1C /* Rain.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		5D237AD61C200DC200293BDD = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +217,8 @@
 				5D237AEE1C200DC400293BDD /* GameViewController.m */,
 				5D0B8B121C3E6A8A005F5C1C /* WeatherLayer.h */,
 				5D0B8B131C3E6A8A005F5C1C /* WeatherLayer.m */,
+				5D0B8B231C3EB148005F5C1C /* SoundManager.h */,
+				5D0B8B241C3EB148005F5C1C /* SoundManager.m */,
 				5D237AF01C200DC400293BDD /* Main.storyboard */,
 				5D237AF31C200DC400293BDD /* Assets.xcassets */,
 				5D237AF51C200DC400293BDD /* LaunchScreen.storyboard */,
@@ -204,6 +231,7 @@
 		5D237AE21C200DC300293BDD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5D0B8B151C3EAC1C005F5C1C /* Sounds */,
 				5D237AE51C200DC300293BDD /* AppDelegate.h */,
 				5D237AE61C200DC300293BDD /* AppDelegate.m */,
 				5D0B8B0D1C3E6804005F5C1C /* Particle Effects */,
@@ -334,6 +362,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0B8B361C3EBF66005F5C1C /* Click.caf in Resources */,
+				5D0B8B371C3EBF66005F5C1C /* Collect.caf in Resources */,
+				5D0B8B381C3EBF66005F5C1C /* Crunch.caf in Resources */,
+				5D0B8B391C3EBF66005F5C1C /* Engine.caf in Resources */,
+				5D0B8B3A1C3EBF66005F5C1C /* Rain.caf in Resources */,
 				5D237BA31C20108800293BDD /* buttonSmall.png in Resources */,
 				5D237BAE1C20108800293BDD /* preview.png in Resources */,
 				5D0B8B111C3E6938005F5C1C /* RainEffect.sks in Resources */,
@@ -386,6 +419,7 @@
 				5D237AE41C200DC300293BDD /* main.m in Sources */,
 				5D0B8AFE1C3BFFD4005F5C1C /* TilesetTextureProvider.m in Sources */,
 				5D237C061C2180F500293BDD /* ScrollingNode.m in Sources */,
+				5D0B8B251C3EB148005F5C1C /* SoundManager.m in Sources */,
 				5D0B8B061C3D334D005F5C1C /* ButtonMenuPlay.m in Sources */,
 				5D0B8AF91C3AB0BB005F5C1C /* BitmapFontLabel.m in Sources */,
 			);
